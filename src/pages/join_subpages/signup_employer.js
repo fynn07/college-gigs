@@ -4,9 +4,9 @@ import '../../styles/subpage_styles/signup_employer.css';
 
 function signup_employer() {
   return (
-    <div className='container-login'>
+    <div className='sign_log_container container-signup'>
       <div className='header'>
-        <h1>Employer Signup</h1>
+        <h1 className="login_header">Employer Signup</h1>
       </div>
       <div className='form-cont'>
       <form method="post" action="" enctype="multipart/form-data">
@@ -44,11 +44,11 @@ function signup_employer() {
           
           <button type="submit" name="submit">Sign Up</button>
         </form>
-        <div class="error-message">
+        <div className="error-message">
           <br/><p>Please fill out all fields.</p>
         </div>
         <br/>
-        <div class="existing-account">
+        <div className="existing-account">
           <p>Already have an account? <a href="/College_Gigs/College_Gigs_Login/Login_Employer.php">Log in</a></p>
         </div>
      </div>

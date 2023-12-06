@@ -3,9 +3,9 @@ import '../../styles/subpage_styles/signup_freelancer.css';
 
 function signup_freelancer() {
   return (
-    <div className='container-signup-freelancer'>
+    <div className='sign_log_container container-signup'>
       <div className='header'>
-        <h1>Freelancer Signup</h1>
+        <h1 className="login_header">Freelancer Signup</h1>
       </div>
       <div className='form-cont'>
         <form method="post" action="" enctype="multipart/form-data">
