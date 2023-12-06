@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import '../../styles/login.css'
+import '../styles/login.css'
 function login() {
   return (
     <div className='container-login'>
@@ -21,7 +21,7 @@ function login() {
 
         <div class="error-message">
           <p>Please fill out all fields.</p><br/>
-          <p>Not an Employer? <strong><Link to='/Login/Freelancer'>Login</Link></strong> as a Free-Lancer now!</p>
+          <p>Not an Employer? <strong><Link to='/Login-Freelancer'>Login</Link></strong> as a Free-Lancer now!</p>
         </div>
 
       </div>

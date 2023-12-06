@@ -5,13 +5,13 @@ import {Link} from 'react-router-dom'
 function join() {
   return (
    <div className='join-container'>
-      <Link to='/Join/freelancer' style={{textDecoration: 'none', color: 'white'}}>
+      <Link to='/Join/freelancer' style={{textDecoration: 'none', color: 'black'}}>
         <div className='join-freelancer'>
           <h2>Freelancer Signup</h2>
         </div>
       </Link> 
       
-      <Link to='/Join/employer' style={{textDecoration: 'none', color: 'white'}}>
+      <Link to='/Join/employer' style={{textDecoration: 'none', color: 'black'}}>
       <div className='join-employer'>
         <h2>Employer Signup</h2>
       </div>
