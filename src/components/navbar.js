@@ -13,7 +13,7 @@ function navbar() {
             <div className="rightSide">
                 <div className="navbar_content">
                     <Link to="/"> Home </Link>
-                    <Link to="/Login-Employer"> Login </Link>
+                    <Link to="/Login"> Login </Link>
                     <Link to="/Join"> Join Us </Link>
                     <Link to="/Services"> Services </Link>
                 </div>
