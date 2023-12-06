@@ -1,11 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import '../styles/login.css'
+
 function login() {
   return (
     <div className='container-login'>
       <div className='header'>
-        <h1 className="login_header">Employer Login</h1>
+        <h1 className="login_header">Freelancer Login</h1>
       </div>
       <div className='form-cont'>
         <form method='post' action=' '>
@@ -16,17 +16,16 @@ function login() {
 
           {/* SAJULGA TO DO - ADD IMPLEMENTATION FOR LOGIN TO SEARCH DATABASE FOR ACCOUNT AND LOGIN*/}
 
-          <button type="submit" name="l_employer">Login</button>
+          <button type="submit" name="l_freelancer">Login</button>
         </form>
 
         <div class="error-message">
           <p>Please fill out all fields.</p><br/>
-          <p>Not an Employer? <strong><Link to='/Login-Freelancer'>Login</Link></strong> as a Free-Lancer now!</p>
+          <p>Not a Freelancer? <strong><Link to='/Login/employer'>Login</Link></strong> as an Employer now!</p>
         </div>
 
       </div>
     </div>
-   
   )
 }
 

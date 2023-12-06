@@ -28,7 +28,7 @@
     
 }
 
-.navbar .rightSide .content{
+.navbar .rightSide .navbar_content{
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
@@ -36,13 +36,13 @@
     
 
 }
-.navbar .rightSide .content *{
+.navbar .rightSide .navbar_content *{
     flex: 1;
     width: 100px;
 
 
 }
-.navbar .rightSide .content a{
+.navbar .rightSide .navbar_content a{
     width: 1px;
     text-decoration: none;
     font-size: 24px;
