@@ -5,7 +5,7 @@ function login() {
   return (
     <div className='container-login'>
       <div className='header'>
-        <h1>Freelancer Login</h1>
+        <h1 className="login_header">Freelancer Login</h1>
       </div>
       <div className='form-cont'>
         <form method='post' action=' '>
