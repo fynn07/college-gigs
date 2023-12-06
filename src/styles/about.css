@@ -29,19 +29,18 @@
 
 #about_heading {
     text-align: center;
-    margin: 50px auto 0;
+    margin: 80px auto 20px;
     font-size: 50px;
     border: 2px solid black;
     border-radius: 20px;
     padding: 20px;
     background-color: rgb(179, 245, 241);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 70%;
+    max-width: 1440px;
 }
 #about_heading:hover {
     transition: 0.5s ease;
     transform: scale(1.02);
-    margin-bottom: 0p;
 }
 
 #portfolio {
@@ -50,15 +49,16 @@
     flex-direction: row;
     background-color: wheat;
     border-radius: 20px;
-    padding: 80px;
-    margin: 0 auto;
+    padding: 60px 40px;
+    max-width: 1440px;
+    margin: 40px auto;
 }
 
 .portrait {
-    width: 300px;
-    height: 300px;
-    margin: auto 30px;
-    border-radius: 300px;
+    width: 280px;
+    height: 280px;
+    margin: auto 20px;
+    border-radius: 50%;
     border: 2px solid black;
 }
 
@@ -67,6 +67,34 @@
     transform: scale(1.03);
 }
 
-.mission-vision{
+#vm_section {
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1440px;
+    justify-content: space-evenly;
+    margin: 40px auto 120px;
+}
+
+.vm_card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 80px;
+    padding: 10px 40px;
+}
+
+.vm_card_item {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 40px;
+    border-radius: 20px;
+    background-color: rgb(187, 249, 233);
+    animation: fade-in 1s forwards;
+    border: 2px solid;
+    font-weight: bold;
+}
+
+p.vm_card_item {
+    display: none;
 }
