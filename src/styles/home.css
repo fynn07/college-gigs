@@ -3,6 +3,7 @@
     width: 100%;
     text-align: center;
     color: #fff;
+    height: 90vh;
 }
 .header h1, .child-one p, .child-two p, .child-three{
     margin: 0;
@@ -21,7 +22,12 @@
 }
 
 .child-three{
+    display: inline-flex;
     padding-bottom: 30px;
+}
+.child-three *{
+    text-align: center;
+    margin-right: 30px;
 }
 
 .header{
@@ -30,4 +36,34 @@
     font-size: 34px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+.headerContainer{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+button{
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+    margin-right: 20px;
+    border-radius: 25px;
+    column-gap: 40px;
+    font-weight: bold;
+    border: 2px solid #b1fff8;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+button a{
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 17px;
+    color: #ffffff;
+}
+
 

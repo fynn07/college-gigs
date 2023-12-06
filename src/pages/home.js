@@ -26,8 +26,8 @@ function home() {
               </strong></p>
           </div>
           <div className ='child-three'>
-              <a href='https://www.discord.com'><button>Hello</button></a>
-              <Link to='/Services'><button>World</button></Link>
+              <a href='https://www.discord.com' target='_blank' rel="noopener noreferrer"><button>JOIN DISCORD</button></a>
+              <Link to='/Services'><button>FIND SERVICES</button></Link>
           </div>
 
         </div>  

@@ -2,7 +2,8 @@ import React from 'react'
 
 function about() {
   return (
-    <div>about</div>
+   <div className='container'>
+   </div> 
   )
 }
 
