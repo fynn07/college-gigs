@@ -36,7 +36,7 @@
     font-size: 34px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.headerContainer{
+.home_container {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,14 +44,17 @@
     display: flex;
     width: 100%;
 }
-#homeContent {
+#home_content {
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
-    max-width: 1080px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
-#homeContent > {
-
+.home_content_element {
+    display: flex;
+    max-width: 1200px;
 }
 
 /*
