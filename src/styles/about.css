@@ -11,7 +11,7 @@
     url(../components/resources/page_backgrounds/about_wallpaper.jpg);
     background-size: 150% 150%;
     animation: gradient 120s ease infinite;
-    max-width: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -41,7 +41,7 @@
 #about_heading:hover {
     transition: 0.5s ease;
     transform: scale(1.02);
-    margin-bottom: 0;
+    margin-bottom: 0p;
 }
 
 #portfolio {

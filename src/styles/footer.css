@@ -1,4 +1,4 @@
-#footer_container {
+.container{
     display: flex;
     background-image: linear-gradient(rgba(111, 174, 255, 0.75), rgba(164, 255, 250, 0.75));
     background-color: black;
@@ -6,14 +6,13 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    z-index: 2;
 }
-#footer_container *{
+.container *{
     flex: 1;
     font-family: 'Courier New', Courier, monospace;
     font-size: 17px;
-}
 
+}
 .footer-links{
     margin: 20px;
     margin-top: 27px;
