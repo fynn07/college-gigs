@@ -26,12 +26,12 @@ function about() {
                 </div>
 
                 <div id='vm_section'>
-                    <div className="vm_card" id='vm_heading'>
-                        <h1 className="vm_card_item vision_heading">Vision</h1>
-                        <h1 className="vm_card_item mission_heading">Mission</h1>
-                    </div>
-                    <div className="vm_card" id='vm_content'>
+                    <div className="vm_card" id='vision_card'>
+                        <h2 className="vm_card_item vision_heading">Vision</h2>
                         <p className="vm_card_item vision_content">{vision}</p>
+                    </div>
+                    <div className="vm_card" id='mission_card'>
+                        <h2 className="vm_card_item mission_heading">Mission</h2>
                         <p className="vm_card_item mission_content">{mission}</p>
                     </div>
                 </div>
