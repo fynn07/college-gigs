@@ -21,7 +21,7 @@ function login() {
 
         <div class="error-message">
           <p>Please fill out all fields.</p><br/>
-          <p>Not a Freelancer? <strong><Link to='/Login/Employer'>Login</Link></strong> as an Employer now!</p>
+          <p>Not a Freelancer? <strong><Link to='/Login-Employer'>Login</Link></strong> as an Employer now!</p>
         </div>
 
       </div>
