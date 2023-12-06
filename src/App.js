@@ -3,7 +3,8 @@ import Navbar from './components/navbar';
 import Footer from './components/footer';
 import Home from './pages/home';
 import Join from './pages/join';
-import Login from './pages/login';
+import Loginemp from './pages/login-employer';
+import Loginfree from './pages/login-freelancer';
 import About from './pages/about';
 import Services from './pages/services';
 import Contact from './pages/contact';
@@ -18,7 +19,8 @@ function App() {
         <Navbar/>
           <Switch>
           <Route exact path='/' component={Home}/>
-          <Route exact path='/Login' component={Login}/>
+          <Route exact path='/Login-Employer' component={Loginemp}/>
+          <Route exact path='/Login-Freelancer' component={Loginfree}/>
           <Route exact path='/Join' component={Join}/>  
           <Route exact path='/Services' component={Services}/>  
           <Route exact path='/About' component={About}/> 
