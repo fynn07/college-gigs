@@ -4,9 +4,9 @@ import '../../styles/subpage_styles/signup_employer.css';
 
 function signup_employer() {
   return (
-    <div className='container-login'>
+    <div className='container-signup'>
       <div className='header'>
-        <h1>Employer Signup</h1>
+        <h1 className="login_header">Employer Signup</h1>
       </div>
       <div className='form-cont'>
       <form method="post" action="" enctype="multipart/form-data">

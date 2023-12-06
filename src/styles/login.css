@@ -1,11 +1,18 @@
-body{
+.container-login, .container-signup {
     background-image: linear-gradient(rgba(20, 23, 33, 0.75), rgba(18, 18, 60, 0.75)),
     url(../components/resources/page_backgrounds/login_background.jpeg);
     background-size: cover;
+    background-repeat: no-repeat;
     font-family: monospace;
-    height: 100vh;
     width: 100%;
+    height: auto;
+    min-height: 100vh;
 }
+.container-signup {
+    background-image: linear-gradient(rgba(20, 23, 33, 0.75), rgba(18, 18, 60, 0.75)),
+    url(../components/resources/page_backgrounds/signup_wallpaper.webp);
+}
+
 .header{
     padding-top: 40px;
 }
@@ -26,8 +33,9 @@ body{
     border-radius: 30px;
     box-shadow: 0 0 10px wheat;
     padding: 40px;
-    margin: 0 auto 100px;
+    margin: 0 auto 144px;
 }
+
 form label {
     display: block;
     font-weight: bold;
