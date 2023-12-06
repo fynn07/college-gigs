@@ -36,12 +36,47 @@
     font-size: 34px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.headerContainer{
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  
+.home_container {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    width: 100%;
 }
+#home_content {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.home_content_element {
+    display: flex;
+    max-width: 1200px;
+}
+
+/*
+.background-image {
+    position: relative;
+    height: 400px; !* Set the height as needed *!
+    background-size: cover;
+    background-position: center;
+    color: #fff; !* Text color on the overlay *!
+}
+
+.background-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); !* Adjust the alpha value for the overlay color *!
+}
+*/
+
 button{
     width: 200px;
     padding: 15px 0;
