@@ -4,8 +4,8 @@
     display: flex;
     background-image: linear-gradient(rgba(164, 255, 250, 0.75), rgba(111, 174, 255, 0.75));
     background-color: black;
-    margin: 0px;
-     
+    margin: 0;
+    z-index: 2;
 }
 
 .navbar .leftSide{
@@ -38,7 +38,6 @@
 }
 .navbar .rightSide .content *{
     flex: 1;
-    flex-shrink: 1;
     width: 100px;
 
 
