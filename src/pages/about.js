@@ -3,6 +3,7 @@ import React from 'react'
 function about() {
   return (
    <div className='container'>
+    hi
    </div> 
   )
 }
