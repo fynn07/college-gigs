@@ -49,7 +49,7 @@ function signup_employer() {
         </div>
         <br/>
         <div className="existing-account">
-          <p>Already have an account? <a href="/College_Gigs/College_Gigs_Login/Login_Employer.php">Log in</a></p>
+          <p>Already have an account? <Link to='/Login/employer'>Log in</Link></p>
         </div>
      </div>
     </div>

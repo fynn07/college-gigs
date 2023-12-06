@@ -1,5 +1,6 @@
 import React from 'react'
 import '../../styles/subpage_styles/signup_freelancer.css';
+import {Link} from 'react-router-dom'
 
 function signup_freelancer() {
   return (
@@ -68,7 +69,7 @@ function signup_freelancer() {
         </div>
         <br/>
         <div class="existing-account">
-          <p>Already have an account? <a href="/College_Gigs/College_Gigs_Login/Login_F_Lancer.php">Log in</a></p>
+          <p>Already have an account? <Link to='/Login/freelancer'>Log in</Link></p>
         </div>
       </div>
     </div>
