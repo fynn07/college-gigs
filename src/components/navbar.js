@@ -11,7 +11,7 @@ function navbar() {
                 <img src={Logo} alt='logo'/>
             </div>
             <div className="rightSide">
-                <div className="navbar_link">
+                <div className="content">
                     <Link to="/"> Home </Link>
                     <Link to="/Login-Employer"> Login </Link>
                     <Link to="/Join"> Join Us </Link>
