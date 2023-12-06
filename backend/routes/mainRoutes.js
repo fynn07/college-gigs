@@ -1,13 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const {
-  login,
+  loginEmployer,
+  loginFreelancer,
   registerEmployer,
-  registerFreelance,
+  registerFreelancer,
+  updateEmployer,
+  updateFreelancer,
+  logout,
 } = require("../controllers/mainControllers");
 
-router.route("/login").post(login);
+const {authenticateEmployer, authenticateFreelancer} = require('../middleware/mainMiddleware');
+
+router.route("/loginEmployer").post(loginEmployer);
+router.route("/loginFreelancer").post(loginFreelancer);
 router.route("/registerEmployer").post(registerEmployer);
-router.route("/registerFreelance").post(registerFreelance);
+router.route("/registerFreelancer").post(registerFreelancer);
+
+router.route("/updateEmployer").post(authenticateEmployer, updateEmployer);
+router.route("/updateFreelancer").post(authenticateFreelancer, updateFreelancer);
+router.route("/logout").post(logout);
 
 module.exports = router;
