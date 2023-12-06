@@ -1,9 +1,33 @@
+
 .content{
     width: 100%;
     text-align: center;
     color: #fff;
+}
+.header h1, .child-one p, .child-two p, .child-three{
+    margin: 0;
+    padding: 0;
+}
+.child-one{
+    padding-bottom: 70px;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+}
 
+.child-two{
+    padding-bottom: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
 }
-.home{
-    height: 100px;
+
+.child-three{
+    padding-bottom: 30px;
 }
+
+.header{
+    padding-top: 30px;
+    padding-bottom: 60px;
+    font-size: 34px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
