@@ -29,9 +29,8 @@ function ProfileEmployer() {
             Current Year Level: <b>{employer.emp_level}</b>
           </p>
           <p>
-            Course: <b></b>"."
+            Course: <b></b>
           </p>
-          "
         </div>
       </div>
 

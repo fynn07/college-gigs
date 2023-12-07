@@ -24,6 +24,12 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
+import Design from "./pages/work_subpages/Design";
+import Marketing from "./pages/work_subpages/Marketing";
+import Programming from "./pages/work_subpages/Programming";
+import Proofread from "./pages/work_subpages/Proofread";
+import Writing from "./pages/work_subpages/Writing";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -68,6 +74,14 @@ function App() {
               <Route path="freelancer" element={<UpdateProfileFreelancer />} />
               <Route path="employer" element={<UpdateProfileEmployer />} />
             </Route>
+          </Route>
+
+          <Route exact path="jobs" element={<Outlet />}>
+            <Route path="marketing" element={<Marketing />} />
+            <Route path="design" element={<Design />} />
+            <Route path="programming" element={<Programming />} />
+            <Route path="proofread" element={<Proofread />} />
+            <Route path="writing" element={<Writing />} />
           </Route>
 
           <Route path="/services" element={<Services />} />
