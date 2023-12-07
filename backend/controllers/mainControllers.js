@@ -19,11 +19,11 @@ async function queryDatabase(query, values = []) {
 }
 
 const loginEmployer = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { emp_email ,  emp_password } = req.body;
 
   let result = await queryDatabase(
     "SELECT * FROM `c_gigs_s_up_employer` where emp_email = ?",
-    [email]
+    [emp_email]
   );
 
   if (result.length === 0) {
@@ -32,7 +32,7 @@ const loginEmployer = asyncHandler(async (req, res) => {
 
   const employer = result[0];
   const pass = employer.emp_pass;
-  const passwordMatch = await bcrypt.compare(password, pass);
+  const passwordMatch = await bcrypt.compare(emp_password, pass);
 
   if (!passwordMatch) {
     return res.status(401).send("Password do not match!");
@@ -47,11 +47,11 @@ const loginEmployer = asyncHandler(async (req, res) => {
 });
 
 const loginFreelancer = asyncHandler(async (req, res) => {
-  const { email, password } = req.body;
+  const { f_email, f_password } = req.body;
 
   let result = await queryDatabase(
     "SELECT * FROM `c_gigs_s_up_flancer` where f_email = ?",
-    [email]
+    [f_email]
   );
 
   if (result.length === 0) {
@@ -60,7 +60,7 @@ const loginFreelancer = asyncHandler(async (req, res) => {
 
   const freelancer = result[0];
   const pass = freelancer.f_password;
-  const passwordMatch = await bcrypt.compare(password, pass);
+  const passwordMatch = await bcrypt.compare(f_password, pass);
 
   if (!passwordMatch) {
     return res.status(401).send("Password do not match!");
@@ -135,7 +135,6 @@ const registerFreelancer = asyncHandler(async (req, res) => {
   } = req.body;
 
   const filepath = req.file.path;
-  console.log(filepath);
   const result = await queryDatabase(
     "SELECT * FROM `c_gigs_s_up_flancer` where f_email= ?",
     [f_email]

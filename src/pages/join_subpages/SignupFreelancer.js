@@ -11,7 +11,6 @@ function SignupFreelancer() {
 
       const formData = new FormData(e.target);
       const imageFile = document.querySelector('input[name="f_pfp"]').files[0];
-      formData.append("f_pfp", imageFile);
 
       const data = await axiosFetch.post("/registerFreelancer", formData, {
         headers: {

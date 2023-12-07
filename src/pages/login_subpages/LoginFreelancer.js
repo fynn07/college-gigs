@@ -6,17 +6,22 @@ import { Link } from "react-router-dom";
 
 function LoginFreelancer() {
   async function handleLoginFreelancer(e) {
+    e.preventDefault();
     try {
       let inputs = {
         f_email: e.target.email.value,
         f_password: e.target.password.value,
       };
 
-      checkMissingInputs();
-      const data = await axiosFetch.post("/loginFreelancer", inputs);
+      const data = await axiosFetch.post("/loginFreelancer", inputs, {});
 
-      localStorage.setItem("userDetails", data.data.freelancer);
-      localStorage.setItem("token", data.data.token);
+      if (data.status !== 200) {
+        throw new Error(data.data.message);
+      }
+      
+      toast.success("Freelancer logged in successfully!");
+      localStorage.setItem("userDetails", JSON.stringify(data.data.freelancer));
+      localStorage.setItem("token", JSON.stringify(data.data.token));
     } catch (e) {
       toast.error(e.message);
     }
@@ -28,7 +33,9 @@ function LoginFreelancer() {
         <h1 className="login_header">Freelancer Login</h1>
       </div>
       <div className="form-cont">
-        <form onSubmit={handleLoginFreelancer} method="post" action=" ">
+        <form onSubmit={handleLoginFreelancer} method="post" action=""
+          encType="multipart/form-data"
+        >
           <label htmlFor="email">Email</label>
           <input
             type="email"

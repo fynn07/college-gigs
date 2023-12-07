@@ -13,7 +13,6 @@ function SignupEmployer() {
       const formData = new FormData(e.target);
       const imageFile = document.querySelector('input[name="emp_pfp"]')
         .files[0];
-      formData.append("emp_pfp", imageFile);
 
       const data = await axiosFetch.post("/registerEmployer", formData, {
         headers: {

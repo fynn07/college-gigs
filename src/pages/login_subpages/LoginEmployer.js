@@ -7,17 +7,22 @@ import "../../styles/login_subpage.css";
 
 function LoginEmployer() {
   async function handleLoginEmployer(e) {
+    e.preventDefault();
     try {
       let inputs = {
         emp_email: e.target.email.value,
         emp_password: e.target.password.value,
       };
 
-      checkMissingInputs();
       const data = await axiosFetch.post("/loginEmployer", inputs);
 
-      localStorage.setItem("userDetails", data.data.employer);
-      localStorage.setItem("token", data.data.token);
+      if (data.status !== 200) {
+        throw new Error(data.data.message);
+      }
+
+      toast.success("Employer logged in successfully!");
+      localStorage.setItem("userDetails", JSON.stringify(data.data.employer));
+      localStorage.setItem("token", JSON.stringify(data.data.token));
     } catch (e) {
       toast.error(e.message);
     }
@@ -29,7 +34,9 @@ function LoginEmployer() {
         <h1 className="login_header">Employer Login</h1>
       </div>
       <div className="form-cont">
-        <form onSubmit={handleLoginEmployer} method="post" action=" ">
+        <form onSubmit={handleLoginEmployer} method="post" action="" 
+          encType="multipart/form-data"
+        >
           <label htmlFor="email">Email</label>
           <input
             type="email"
