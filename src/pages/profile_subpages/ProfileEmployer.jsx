@@ -14,7 +14,9 @@ function ProfileEmployer() {
       <div className="left-side">
         <div className="personal-info">
           <img src="../../utils/Black.jpg" alt="Profile" />
+
           {/* <img src="" alt="Profile Picture" /> */}
+
           <h2>Hey there! My name is </h2>
           <h1>{employer.emp_name}</h1>
           <p>

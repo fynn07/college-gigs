@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { checkMissingInputs } from "../../utils/helper";
+import React from "react";
 import { Link } from "react-router-dom";
 import { axiosFetch } from "../../utils/axios";
 import { toast } from "react-toastify";
@@ -11,8 +10,6 @@ function SignupEmployer() {
       e.preventDefault();
 
       const formData = new FormData(e.target);
-      const imageFile = document.querySelector('input[name="emp_pfp"]')
-        .files[0];
 
       const data = await axiosFetch.post("/registerEmployer", formData, {
         headers: {
@@ -77,12 +74,6 @@ function SignupEmployer() {
           </button>
         </form>
 
-        {/* {missingFieldsError && (
-          <div className="error-message">
-            <br />
-            <p>Please fill out all fields.</p>
-          </div>
-        )} */}
 
         <br />
         <div className="existing-account">

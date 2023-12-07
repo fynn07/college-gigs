@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { axiosFetch } from "../../utils/axios";
 import "../../styles/subpage_styles/signup_freelancer.css";
 import { Link } from "react-router-dom";
@@ -10,7 +10,6 @@ function SignupFreelancer() {
       e.preventDefault();
 
       const formData = new FormData(e.target);
-      const imageFile = document.querySelector('input[name="f_pfp"]').files[0];
 
       const data = await axiosFetch.post("/registerFreelancer", formData, {
         headers: {

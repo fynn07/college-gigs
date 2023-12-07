@@ -1,9 +1,31 @@
 
+import { toast } from "react-toastify";
+import { axiosFetch } from "../../utils/axios";
+import "../../styles/subpage_styles/update_profile.css"
 
 function UpdateProfileFreelancer() {
 
-  function handleUpdateProfileFreelancer(e) {
+  async function handleUpdateProfileFreelancer(e) {
     e.preventDefault();
+
+    try {
+      const formData = new FormData(e.target);
+
+      const data = await axiosFetch.post("/updateFreelancer", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      if (data.status !== 200) {
+        throw new Error(data.statusText);
+      }
+
+      toast.success("Freelancer updated account successfully!");
+    } catch (e) {
+      toast.error(e.message);
+    }
+
   }
 
   return (
@@ -28,15 +50,15 @@ function UpdateProfileFreelancer() {
       </div>
       <section className="edit-form">
         <h2>Edit Profile Information</h2>
-        <form onSubmit={handleUpdateProfileFreelancer} method="post">
+        <form onSubmit={handleUpdateProfileFreelancer} encType="multipart/form-data" method="post">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" name="name" value="" />
+          <input type="text" id="name" name="f_name" value="" />
 
           <label htmlFor="age">Age</label>
-          <input type="text" id="age" name="age" value="" />
+          <input type="text" id="age" name="f_age" value="" />
 
           <label htmlFor="school">School</label>
-          <select type="text" id="school" name="school" >
+          <select type="text" id="school" name="f_school" >
             <option value="">----------</option>
             <option value="University of San Carlos: Talamban Campus">University of San Carlos: Talamban Campus</option>
             <option value="University of San Carlos: Downtown Campus">University of San Carlos: Downtown Campus</option>
@@ -47,7 +69,7 @@ function UpdateProfileFreelancer() {
           </select>
 
           <label htmlFor="level">Current Year Level</label>
-          <select type="text" id="level" name="level">
+          <select type="text" id="level" name="f_level">
             <option value="">----------</option>
             <option value="First Year">First Year</option>
             <option value="Second Year">Second Year</option>
@@ -57,22 +79,22 @@ function UpdateProfileFreelancer() {
           </select>
 
           <label htmlFor="course">Course</label>
-          <input type="text" id="course" name="course" value="" />
+          <input type="text" id="course" name="f_course" value="" />
 
           <label htmlFor="port">Portfolio Link</label>
-          <input type="text" id="port" name="port" />
+          <input type="text" id="port" name="f_portfolio" />
 
           <label htmlFor="fb">FaceBook Link</label>
-          <input type="text" id="fb" name="fb" />
+          <input type="text" id="fb" name="f_fb" />
 
           <label htmlFor="insta">Instagram Link</label>
-          <input type="text" id="insta" name="insta" />
+          <input type="text" id="insta" name="f_insta" />
 
           <label htmlFor="linked">LinkedIn Link</label>
-          <input type="text" id="linked" name="linked" />
+          <input type="text" id="linked" name="f_linkedin" />
 
           <label htmlFor="tweet">Twitter Link</label>
-          <input type="text" id="tweet" name="tweet" />
+          <input type="text" id="tweet" name="f_twitter" />
 
           <div className="button-container">
             <button type="submit" name="show">Show Preview</button>
