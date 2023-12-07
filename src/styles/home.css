@@ -94,6 +94,10 @@ button{
     overflow: hidden;
     color: white;
 }
+button:hover{
+    transition: 0.5s ease;
+    transform: scale(1.02);
+}
 button a{
     text-decoration: none;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

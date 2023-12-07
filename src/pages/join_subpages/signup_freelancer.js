@@ -62,6 +62,8 @@ function signup_freelancer() {
           <label for="pfp">Upload Profile Picture</label>
           <input type="file" id="myFile" name="filename"/>
 
+          {/* SAJULGA TODO - DATABASE IMPLEMENTATION FOR SIGNUP */}
+
           <button type="submit" name="signup">Sign Up</button>
         </form>
         <div class="error-message">
