@@ -1,6 +1,5 @@
-
-
-import { axiosFetch } from "./axios"
+import { axiosFetch } from "./axios";
+import { useEffect } from "react";
 
 export function checkMissingInputs(inputs) {
   for (const key in inputs) {
@@ -10,17 +9,24 @@ export function checkMissingInputs(inputs) {
   }
 }
 
+export async function useFetchAllWorks(setData, filter) {
 
-export async function useGetAllWorks(filter) {
+  useEffect(() => {
+    const fetchData = async () => {
 
-  let data = await axiosFetch("/freelancer/works");
+      try {
+        let data = await axiosFetch("/freelancer/works");
 
-  console.log(data);
+        data = data.data["Freelancer works"].filter((work) => {
+          return work.f_work === filter;
+        });
 
-  data = data.data.filter((work) => {
-    return work.f_type === filter;
-  })
+        setData(data);
 
-  return data;
-
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    }
+    fetchData();
+  }, [])
 }
