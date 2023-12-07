@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { checkMissingInputs } from "../../utils/helper";
 import { axiosFetch } from "../../utils/axios";
 import "../../styles/subpage_styles/signup_freelancer.css";
 import { Link } from "react-router-dom";
@@ -10,25 +9,15 @@ function SignupFreelancer() {
     try {
       e.preventDefault();
 
-      const inputs = {
-        f_name: e.target.name.value,
-        f_age: e.target.age.value,
-        f_email: e.target.email.value,
-        f_password: e.target.password.value,
-        f_school: e.target.school.value,
-        f_level: e.target.level.value,
-        f_course: e.target.course.value,
-        f_portfolio: e.target.port.value,
-        f_fb: e.target.fb.value,
-        f_insta: e.target.insta.value,
-        f_linkedin: e.target.linked.value,
-        f_twitter: e.target.tweet.value,
-        f_pfp: e.target.f_pfp.value,
-      };
+      const formData = new FormData(e.target);
+      const imageFile = document.querySelector('input[name="f_pfp"]').files[0];
+      formData.append("f_pfp", imageFile);
 
-      checkMissingInputs();
-      console.log(inputs);
-      const data = await axiosFetch.post("/registerFreelancer", inputs);
+      const data = await axiosFetch.post("/registerFreelancer", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       if (data.status !== 200) {
         throw new Error(data.statusText);
@@ -53,19 +42,19 @@ function SignupFreelancer() {
           encType="multipart/form-data"
         >
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" name="name" required />
+          <input type="text" id="name" name="f_name" required />
 
           <label htmlFor="age">Age</label>
-          <input type="text" id="age" name="age" required />
+          <input type="text" id="age" name="f_age" required />
 
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="email" required />
+          <input type="email" id="email" name="f_email" required />
 
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" required />
+          <input type="password" id="password" name="f_password" required />
 
           <label htmlFor="school">School</label>
-          <select type="text" id="school" name="school" required>
+          <select type="text" id="school" name="f_school" required>
             <option value="University of San Carlos: Talamban Campus">
               University of San Carlos: Talamban Campus
             </option>
@@ -85,7 +74,7 @@ function SignupFreelancer() {
           </select>
 
           <label htmlFor="level">Current Year Level</label>
-          <select type="text" id="level" name="level" required>
+          <select type="text" id="level" name="f_level" required>
             <option value="First Year">First Year</option>
             <option value="Second Year">Second Year</option>
             <option value="Third Year">Third Year</option>
@@ -94,22 +83,22 @@ function SignupFreelancer() {
           </select>
 
           <label htmlFor="course">Course</label>
-          <input type="text" id="course" name="course" required />
+          <input type="text" id="course" name="f_course" required />
 
           <label htmlFor="port">Portfolio Link</label>
-          <input type="text" id="port" name="port" />
+          <input type="text" id="port" name="f_portfolio" />
 
           <label htmlFor="fb">FaceBook Link</label>
-          <input type="text" id="fb" name="fb" />
+          <input type="text" id="fb" name="f_fb" />
 
           <label htmlFor="insta">Instagram Link</label>
-          <input type="text" id="insta" name="insta" />
+          <input type="text" id="insta" name="f_insta" />
 
           <label htmlFor="linked">LinkedIn Link</label>
-          <input type="text" id="linked" name="linked" />
+          <input type="text" id="linked" name="f_linkedin" />
 
           <label htmlFor="tweet">Twitter Link</label>
-          <input type="text" id="tweet" name="tweet" />
+          <input type="text" id="tweet" name="f_twitter" />
 
           <label htmlFor="pfp">Upload Profile Picture</label>
           <input type="file" id="myFile" name="f_pfp" />

@@ -10,22 +10,16 @@ function SignupEmployer() {
     try {
       e.preventDefault();
 
-      const inputs = {
-        emp_name: e.target.name.value,
-        emp_email: e.target.email.value,
-        emp_pass: e.target.password.value,
-        emp_comp: e.target.company.value,
-        emp_fb: e.target.fb.value,
-        emp_insta: e.target.insta.value,
-        emp_linkedin: e.target.linked.value,
-        emp_page: e.target.port.value,
-        emp_pfp: e.target.emp_pfp.value,
-        emp_address: e.target.address.value,
-      };
+      const formData = new FormData(e.target);
+      const imageFile = document.querySelector('input[name="emp_pfp"]')
+        .files[0];
+      formData.append("emp_pfp", imageFile);
 
-      checkMissingInputs();
-
-      const data = await axiosFetch.post("/registerEmployer", inputs);
+      const data = await axiosFetch.post("/registerEmployer", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       if (data.status !== 200) {
         throw new Error(data.statusText);
@@ -50,31 +44,31 @@ function SignupEmployer() {
           encType="multipart/form-data"
         >
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" name="name" required />
+          <input type="text" id="name" name="emp_name" required />
 
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="email" required />
+          <input type="email" id="email" name="emp_email" required />
 
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" required />
+          <input type="password" id="password" name="emp_pass" required />
 
           <label htmlFor="company">Company Name</label>
-          <input type="text" id="company" name="company" required />
+          <input type="text" id="company" name="emp_comp" required />
 
           <label htmlFor="linked">Company Address</label>
-          <input type="text" id="address" name="address" />
+          <input type="text" id="address" name="emp_address" />
 
           <label htmlFor="port">Company Page</label>
-          <input type="text" id="port" name="port" />
+          <input type="text" id="port" name="emp_page" />
 
           <label htmlFor="fb">Company FaceBook</label>
-          <input type="text" id="fb" name="fb" />
+          <input type="text" id="fb" name="emp_fb" />
 
           <label htmlFor="insta">Company Instagram</label>
-          <input type="text" id="insta" name="insta"></input>
+          <input type="text" id="insta" name="emp_insta"></input>
 
           <label htmlFor="linked">Company LinkedIn</label>
-          <input type="text" id="linked" name="linked" />
+          <input type="text" id="linked" name="emp_linkedin" />
 
           <label htmlFor="pfp">Upload Profile Picture</label>
           <input type="file" id="myFile" name="emp_pfp" />
