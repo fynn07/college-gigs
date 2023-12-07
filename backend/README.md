@@ -126,26 +126,23 @@
 - [x] `f_work`
 - [x] `f_time`
 - [x] f_sdate,
-f_edate,
-f_description,
-f_price,
-f_cname,
-f_card,
-f_expmonth,
-f_expyear,
-f_cvv        
-
-
-
+- [x] f_edate,
+- [x] f_description,
+- [x] f_price,
+- [x] f_cname,
+- [x] f_card,
+- [x] f_expmonth,
+- [x] f_expyear,
+- [x]f_cvv        
 
 #### Get Freelancer's Works
-- **Route:** `/api/freelancer/works`
+- **Route:** `/getFreelancerWorks`
 - **Method:** `GET`
 - **Description:** Retrieves all works assigned to the logged-in freelancer.
 
 ### General Operations
 
 #### Logout
-- **Route:** `/api/logout`
+- **Route:** `/logout`
 - **Method:** `POST`
 - **Description:** Logs the user out of the system by blacklisting the provided JWT token.
