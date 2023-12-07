@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# **College Gigs**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### **[Backend API DOCUMENTATION](https://documenter.getpostman.com/view/31033077/2s9YkgC5Hy)**
 
-## Available Scripts
+> 이 노래는 it's about you, baby
 
-In the project directory, you can run:
+> Only you
 
-### `npm start`
+> You, you, you, you, you, you, you
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> 내가 힘들 때, 울 것 같을 때
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> 기운도 이젠 나지 않을 때
 
-### `npm test`
+> (It's you) 날 걱정하네, (it's you) 날 웃게하네
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> 말 안 해도 돼, boy, what do you say?
 
-### `npm run build`
+> 멀리든 언제든지 달려와
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> (They keep on asking me, "who is he?")
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> 바쁜 척도 없이 넌 나타나
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+> (They keep on asking me, "who is he?")
 
-### `npm run eject`
+> "이게 말이 되니?" 난 물어봐
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+> (They keep on asking me, "who is he?")
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> 너는 말야, he's the one that's living in my system, baby
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> Oh my, oh my God! 예상했어 나
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> I was really hoping that he will come through
 
-## Learn More
+> Oh my, oh my God! 단 너뿐이야
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> Asking all the time about what I should do
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+> No, I can never let him go, 너만 생각나 24
 
-### Code Splitting
+> 난 행운아야 정말로, I know, I know
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+> 널 알기 전까지는 나, 의미 없었어 전부 다
 
-### Analyzing the Bundle Size
+> 내 맘이 끝이 없는 걸, I know, I know
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+> I'm going crazy, right?
 
-### Making a Progressive Web App
+> 어디서든, 몇 번이든
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+> There ain't nothing else that I would hold on to
 
-### Advanced Configuration
+> I hear his voice through all the noise
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+> 잠시라도 내 손 놓지 마, no, no
 
-### Deployment
+> 걱정 없잖아 'cause I got someone
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+> 혼자라도 괜찮아 'cause I love someone
 
-### `npm run build` fails to minify
+> 멀리든 언제든지 달려와
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> (They keep on asking me, "who is he?")
+
+> 바쁜 척도 없이 넌 나타나
+
+> (They keep on asking me, "who is he?")
+
+> "이게 말이 되니?" 난 물어봐
+
+> (They keep on asking me, "who is he?")
+
+> 너는 말야, he's the one that's living in my system, baby
+
+> Oh my, oh my God! 예상했어 나
+
+> I was really hoping that he will come through
+
+> Oh my, oh my God! 단 너뿐이야
+
+> Asking all the time about what I should do
+
+> No, I can never let him go, 너만 생각나 24
+
+> 난 행운아야 정말로, I know, I know
+
+> 널 알기 전까지는 나, 의미 없었어 전부 다
+
+> 내 맘이 끝이 없는 걸, I know, I know
+
+> He's the one that's living in my system, baby
+
+> Baby, baby
+
+> Bab-baby (I'm going crazy, right?)
+
+> Baby, baby (I'm going crazy, right?)
+
+> Bab-baby (너와 나)
+
+> My heart is glowing, it's glowing up (glowing up)
+
+> 너랑만 있으면 무서울 게 없어 (glowing up)
+
+> 가득 메워진, 다 메워진 (붉어진)
+
+> My heart is glowing, it'd be glowing ('cause he!)
+
+> Oh my, oh my God! 예상했어 나
+
+> I was really hoping that he will come through
+
+> Oh my, oh my God! 단 너뿐이야
+
+> Asking all the time about what I should do (너와 나)
+
+> No, I can never let him go, he's right there for me, 24
+
+> 난 행운아야 정말로, I know, I know (너와 나)
+
+> 널 알기 전까지는 나, 의미 없었어 전부 다, 어떡해
+
+> My heart is glowing, it's glowing
