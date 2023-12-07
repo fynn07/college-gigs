@@ -1,14 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
 
 function FreelanceJobs({ jobs }) {
 
+  const isAuthenticated = Boolean(localStorage.getItem("token"));
 
   function handleApplyJob() {
 
   }
-
-  console.log(jobs);
 
   return (
     <>
@@ -30,11 +30,10 @@ function FreelanceJobs({ jobs }) {
                 <h3>{job.f_price}</h3>
               </div>
               <div className="work-details">
-                <a href="/College_Gigs/College_Gigs_Payment/Payment.php? ids='.urlencode($wid[$i].','.$eid).'"><button><i className="fa fa-handshake-o" style={{ fontSize: "20px", marginRight: "10px", textAlign: "center" }}></i>Hire</button></a>
-
                 <div className="work-details">
-                  <a href="/College_Gigs/College_Gigs_Login/Login_Employer.php"><button><i className="fa fa-handshake-o" style={{ fontSize: "20px", marginRight: "10px", textAlign: "center" }}></i>Hire</button></a>
+                  <Link href={isAuthenticated ? "/payment" : "/login/employer"}><button><i className="fa fa-handshake-o" style={{ fontSize: "20px", marginRight: "10px", textAlign: "center" }}></i>Hire</button></Link>
                 </div>
+
               </div>
             </div>
           )

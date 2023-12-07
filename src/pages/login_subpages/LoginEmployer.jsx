@@ -3,9 +3,14 @@ import { axiosFetch } from "../../utils/axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { checkMissingInputs } from "../../utils/helper";
+import { useNavigate } from "react-router-dom"
 import "../../styles/login_subpage.css";
 
 function LoginEmployer() {
+
+  const navigate = useNavigate();
+
+
   async function handleLoginEmployer(e) {
     e.preventDefault();
     try {
@@ -23,6 +28,8 @@ function LoginEmployer() {
       toast.success("Employer logged in successfully!");
       localStorage.setItem("userDetails", JSON.stringify(data.data.employer));
       localStorage.setItem("token", JSON.stringify(data.data.token));
+      navigate("/user/profile/employer");
+
     } catch (e) {
       toast.error(e.message);
     }

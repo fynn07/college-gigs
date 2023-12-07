@@ -1,10 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"
 import { checkMissingInputs } from "../../utils/helper";
 import { toast } from "react-toastify";
 import { axiosFetch } from "../../utils/axios";
 import { Link } from "react-router-dom";
 
 function LoginFreelancer() {
+
+  const navigate = useNavigate();
+
   async function handleLoginFreelancer(e) {
     e.preventDefault();
     try {
@@ -22,6 +26,7 @@ function LoginFreelancer() {
       toast.success("Freelancer logged in successfully!");
       localStorage.setItem("userDetails", JSON.stringify(data.data.freelancer));
       localStorage.setItem("token", JSON.stringify(data.data.token));
+      navigate("/user/profile/freelancer");
     } catch (e) {
       toast.error(e.message);
     }

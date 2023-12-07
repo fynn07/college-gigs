@@ -29,6 +29,8 @@ import Marketing from "./pages/work_subpages/Marketing";
 import Programming from "./pages/work_subpages/Programming";
 import Writing from "./pages/work_subpages/Writing";
 
+import Payment from "./pages/Payment";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -43,17 +45,17 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
 
-          <Route path="login">
+          <Route exact path="login">
             <Route index element={<Login />} />
-            <Route path="employer" element={<LoginEmployer />} />
-            <Route path="freelancer" element={<LoginFreelancer />} />
+            <Route exact path="employer" element={<LoginEmployer />} />
+            <Route exact path="freelancer" element={<LoginFreelancer />} />
           </Route>
-          <Route path="join">
+          <Route exact path="join">
             <Route index element={<Join />} />
-            <Route path="employer" element={<JoinEmployer />} />
-            <Route path="freelancer" element={<JoinFreelancer />} />
+            <Route exact path="employer" element={<JoinEmployer />} />
+            <Route exact path="freelancer" element={<JoinFreelancer />} />
           </Route>
 
           <Route
@@ -65,27 +67,36 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route path="profile">
-              <Route path="employer" element={<ProfileEmployer />} />
-              <Route path="freelancer" element={<ProfileFreelancer />} />
+            <Route exact path="profile">
+              <Route exact path="employer" element={<ProfileEmployer />} />
+              <Route exact path="freelancer" element={<ProfileFreelancer />} />
             </Route>
-            <Route path="update">
-              <Route path="freelancer" element={<UpdateProfileFreelancer />} />
-              <Route path="employer" element={<UpdateProfileEmployer />} />
+            <Route exact path="update">
+              <Route
+                exact
+                path="freelancer"
+                element={<UpdateProfileFreelancer />}
+              />
+              <Route
+                exact
+                path="employer"
+                element={<UpdateProfileEmployer />}
+              />
             </Route>
           </Route>
 
           <Route exact path="jobs" element={<Outlet />}>
-            <Route path="marketing" element={<Marketing />} />
-            <Route path="design" element={<Design />} />
-            <Route path="programming" element={<Programming />} />
-            <Route path="writing" element={<Writing />} />
+            <Route exact path="marketing" element={<Marketing />} />
+            <Route exact path="design" element={<Design />} />
+            <Route exact path="programming" element={<Programming />} />
+            <Route exact path="writing" element={<Writing />} />
           </Route>
 
-          <Route path="/services" element={<Services />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
+          <Route exact path="/services" element={<Services />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/contact" element={<Contact />} />
+          <Route exact path="/payment" element={<Payment />} />
+          <Route exact path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </Router>
