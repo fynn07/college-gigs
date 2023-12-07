@@ -7,7 +7,7 @@ function Join() {
     <div className="sign_log_container container-menu">
       <div className="join-container">
         <Link
-          to="/Join/freelancer"
+          to="/join/freelancer"
           style={{ textDecoration: "none", color: "black" }}
         >
           <div className="join-freelancer">
@@ -16,7 +16,7 @@ function Join() {
         </Link>
 
         <Link
-          to="/Join/employer"
+          to="/join/employer"
           style={{ textDecoration: "none", color: "black" }}
         >
           <div className="join-employer">

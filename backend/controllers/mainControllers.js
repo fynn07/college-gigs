@@ -113,7 +113,6 @@ const registerEmployer = asyncHandler(async (req, res) => {
       emp_address,
     ]
   );
-  console.log(newUser);
 
   return res.status(200).send("success");
 });
@@ -188,7 +187,7 @@ const updateEmployer = asyncHandler(async (req, res) => {
     [emp_id]
   );
 
-  if (result.length == 0) return res.status(409).send("Employer not found!");
+  if (result.length === 0) return res.status(409).send("Employer not found!");
 
   const query =
     "UPDATE `c_gigs_s_up_employer` SET emp_name = ?, emp_comp = ?, emp_fb = ?, emp_insta = ?, emp_linkedin = ?, emp_page = ?, emp_pfp = ?, emp_address = ? WHERE emp_id = ?";
