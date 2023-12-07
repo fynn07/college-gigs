@@ -1,55 +1,59 @@
-import React from 'react'
-import '../styles/services.css'
-import GDesign from '../components/resources/services_pictures/graphic_design.jpeg'
-import Writing from '../components/resources/services_pictures/writing.jpeg'
-import Programming from '../components/resources/services_pictures/programming.jpeg'
-import Dmarketing from '../components/resources/services_pictures/digital_marketing.jpeg'
-import {Link} from 'react-router-dom'
+import React from "react";
+import "../styles/services.css";
+import GDesign from "../components/resources/services_pictures/graphic_design.jpeg";
+import Writing from "../components/resources/services_pictures/writing.jpeg";
+import Programming from "../components/resources/services_pictures/programming.jpeg";
+import Dmarketing from "../components/resources/services_pictures/digital_marketing.jpeg";
+import { Link } from "react-router-dom";
 
-function services() {
+function Services() {
   return (
-    <div className='services-container'>
-      <div className='header-services'>
-        <h1>Welcome to College Gigs</h1>
-        <p>Get things done with just five dollars. Find freelance services for your business or personal projects</p>
-      </div>
-      <div className='services-content'>
-        <p className='content-title'>Popular Categories:</p>
-        <div className='first-row-container'>
+    <div id="services">
+      <div id="services_container">
+        <div id="services_header">
+          <h1>Welcome to College Gigs</h1>
+          <p>
+            Get things done with just five dollars. Find freelance services for
+            your business or personal projects
+          </p>
+        </div>
+        <div id="services_content">
+          <div className="services_section" id="popular_services">
+            <p className="services_title">Popular Categories:</p>
+            <div className="services_grid">
+              <div className="services_tile first-child">
+                <Link to="/">
+                  <img src={GDesign} alt="Graphic Design" />
+                </Link>
+                <p>Graphic Design</p>
+              </div>
 
-            <div className='child first-child'>
-              <p>Graphic Design</p>
-              <Link to='/'>
-                <img src={GDesign} alt='Graphic Design'/>
-              </Link>
+              <div className="services_tile second-child">
+                <Link to="/">
+                  <img src={Writing} alt="Writing" />
+                </Link>
+                <p>Writing</p>
+              </div>
+
+              <div className="services_tile third-child">
+                <Link to="">
+                  <img src={Programming} alt="Programming" />
+                </Link>
+                <p>Programming</p>
+              </div>
+
+              <div className="services_tile fourth-child">
+                <Link to="">
+                  <img src={Dmarketing} alt="Digital Marketing" />
+                </Link>
+                <p>Marketing</p>
+              </div>
             </div>
-           
-            <div className='child second-child'>
-              <p>Writing</p>
-              <Link to='/'>
-              <img src={Writing} alt='Writing'/>
-              </Link>
-            </div>
-          
-            <div className='child third-child'>
-              <p>Programming</p>
-              <Link to=''>
-              <img src={Programming} alt='Programming'/>
-              </Link>
-           </div>
-            
-            <div className='child fourth-child'>
-              <p>Marketing</p>
-              <Link to=''>
-              <img src={Dmarketing} alt='Digital Marketing'/>
-              </Link>
-            </div>
-          
-         
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default services
+export default Services;
