@@ -113,6 +113,7 @@ const registerEmployer = asyncHandler(async (req, res) => {
       emp_address,
     ]
   );
+  console.log(newUser);
 
   return res.status(200).send("success");
 });
@@ -168,6 +169,103 @@ const registerFreelancer = asyncHandler(async (req, res) => {
   return res.status(200).send("User successfully registered");
 });
 
+const getFreelancerDetails = asyncHandler(async (req, res) => {
+  const id = req.query.id;
+
+  let query = "SELECT * FROM `c_gigs_s_up_flancer` WHERE f_id = ?";
+  const freelancerDetails = await queryDatabase(query, [id]);
+
+  if (freelancerDetails.length <= 0) {
+    return res.status(404).send("Freelancer not found");
+  }
+
+  query = "SELECT * FROM `c_gigs_works` WHERE f_id = ?";
+  const works = await queryDatabase(query, [id]);
+
+  return res.status(200).json({ freelancer: freelancerDetails, works: works });
+});
+
+const applyFreelancerWork = asyncHandler(async (req, res) => {
+  const { f_id, f_name, f_email } = req.tokenData;
+
+  let {
+    f_work,
+    f_time,
+    f_sdate,
+    f_edate,
+    f_description,
+    f_price,
+    f_cname,
+    f_card,
+    f_expmonth,
+    f_expyear,
+    f_cvv,
+  } = req.body;
+
+  const query =
+    "INSERT INTO `c_gigs_works` (f_id, f_name, f_email, f_work, f_time, f_sdate, f_edate, f_description, f_price, f_cname, f_card, f_expmonth, f_expyear, f_cvv, emp_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+  const result = await queryDatabase(query, [
+    f_id,
+    f_name,
+    f_email,
+    f_work,
+    f_time,
+    f_sdate,
+    f_edate,
+    f_description,
+    f_price,
+    f_cname,
+    f_card,
+    f_expmonth,
+    f_expyear,
+    f_cvv,
+    1,
+  ]);
+  if (result.length >= 0) {
+    return res.status(400).send("Something went wrong");
+  }
+
+  return res.status(200).send("Successfully applied");
+});
+
+const deleteFreelancerWork = asyncHandler(async (req, res) => {
+  const work_id = req.query.work_id;
+
+  let query = "DELETE FROM `c_gigs_works` WHERE w_id = ? AND f_id = ?";
+  const result = await queryDatabase(query, [work_id, req.tokenData.f_id]);
+
+  if (result.affectedRows <= 0) {
+    return res.status(400).send("Work not found");
+  }
+
+  return res.status(200).send("Successfully deleted work");
+});
+
+const getFreelancerWorks = asyncHandler(async (req, res) => {
+  const query = "SELECT * FROM `c_gigs_works`";
+
+  const works = await queryDatabase(query);
+
+  return res.status(200).json({ "Freelancer works": works });
+});
+
+const hireFreelancer = asyncHandler(async (req, res) => {
+  const work_id = req.query.work_id;
+  const { emp_id } = req.tokenData;
+
+  const query =
+    "UPDATE `c_gigs_works` SET emp_id = ? WHERE w_id = ? AND emp_id = ?";
+
+  const result = await queryDatabase(query, [emp_id, work_id, 0]);
+
+  if (result.affectedRows <= 0) {
+    return res.status(400).send("Something went wrong");
+  }
+
+  return res.status(200).send("Successfully hired freelancer");
+});
+
 const updateEmployer = asyncHandler(async (req, res) => {
   let {
     emp_name,
@@ -219,15 +317,9 @@ const updateFreelancer = asyncHandler(async (req, res) => {
     f_insta,
     f_linkedin,
     f_twitter,
-    f_pfp,
   } = req.body;
 
   const f_id = req.tokenData.f_id;
-
-  const result = await queryDatabase(
-    "SELECT * FROM `c_gigs_s_up_flancer` where f_id = ?",
-    [f_id]
-  );
 
   if (result.length == 0) return res.status(409).send("Freelancer not found!");
 
@@ -268,6 +360,11 @@ module.exports = {
   loginFreelancer,
   registerEmployer,
   registerFreelancer,
+  getFreelancerDetails,
+  applyFreelancerWork,
+  deleteFreelancerWork,
+  getFreelancerWorks,
+  hireFreelancer,
   updateEmployer,
   updateFreelancer,
   logout,
