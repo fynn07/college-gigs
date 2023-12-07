@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2023 at 08:22 PM
+-- Generation Time: Dec 07, 2023 at 08:25 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -41,22 +41,6 @@ CREATE TABLE `c_gigs_s_up_employer` (
   `emp_address` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `c_gigs_s_up_employer`
---
-
-INSERT INTO `c_gigs_s_up_employer` (`emp_id`, `emp_name`, `emp_email`, `emp_pass`, `emp_comp`, `emp_fb`, `emp_insta`, `emp_linkedin`, `emp_page`, `emp_pfp`, `emp_address`) VALUES
-(1, 'Mark Allen Jugalbot', 'markosallenus@gmail.com', '123456', 'College Gigs Inc.', 'https://www.facebook.com/MarK.of.Marks', 'https://www.facebook.com/MarK.of.Marks', 'https://www.facebook.com/MarK.of.Marks', 'https://www.facebook.com/MarK.of.Marks', '../C_Gigs_Photos/F_Lancer_Pfp/646c7975e02f4_MJugalbot.jpg', 'Cebu, Philippines'),
-(2, 'John Lorenz Martin', 'martin@gmail.com', '123456', 'College Gigs Inc.', 'https://www.facebook.com/johnlorenz.martin.1', 'https://www.facebook.com/johnlorenz.martin.1', 'https://www.facebook.com/johnlorenz.martin.1', 'https://www.facebook.com/johnlorenz.martin.1', '../C_Gigs_Photos/F_Lancer_Pfp/646c76569578e_Martin.jpg', 'Cebu, Philippines'),
-(3, 'Ryan Krisztonn Yana', 'ryan@gmail.com', '123456', 'College Gigs Inc.', 'https://www.facebook.com/RyanKrisztonn.Yana', 'https://www.facebook.com/RyanKrisztonn.Yana', 'https://www.facebook.com/RyanKrisztonn.Yana', 'https://www.facebook.com/RyanKrisztonn.Yana', '../C_Gigs_Photos/F_Lancer_Pfp/646c78e6661a5_RyanY.jpg', 'Cebu, Philippines'),
-(4, 'Jab Abadia', 'jab@gmail.com', '123456', 'College Gigs Inc.', 'https://www.facebook.com/Jabalazer.Abadia', 'https://www.facebook.com/Jabalazer.Abadia', 'https://www.facebook.com/Jabalazer.Abadia', 'https://www.facebook.com/Jabalazer.Abadia', '../C_Gigs_Photos/F_Lancer_Pfp/646c79025272a_Jab.jpg', 'Cebu, Philippines'),
-(5, 'Martin Meont', 'guest@gmail.com', '123456', 'Starries', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.linkedin.com/login', '', '../C_Gigs_Photos/F_Lancer_Pfp/646e040a89d88_image.jpg', 'Cebu, Philippines'),
-(6, 'Jake', 'jake@gmail.com', '123', 'DUDES', 'facebook', 'instagram', 'linkedin', 'address', '', 'address'),
-(7, 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asdf', 'asd'),
-(12, '', 'adrian2@gmail.com', '$2a$10$Z73dZVG8NXDBBGR9PFTGPOD7mGcf59YZD9jmeSQVx0X/rpM5KFcVG', '', '', '', '', '', 'uploads\\employer\\emp_pfp-1701960575447.jpeg', ''),
-(13, '', '', '$2a$10$mp75vT5SUthm7bREz5Mb.eNumngOhZM1VhT7U2HTXIOdOBUVq3RxW', '', '', '', '', '', 'uploads\\employer\\emp_pfp-1701974211190.jpg', ''),
-(14, '', '1', '$2a$10$//GmSQdnkkE8S67Iarj1A.piDy6FzJD/0XE6PagTsnLH0Nuk/xkxK', '', '', '', '', '', 'uploads\\employer\\emp_pfp-1701974378910.jpg', '');
-
 -- --------------------------------------------------------
 
 --
@@ -79,19 +63,6 @@ CREATE TABLE `c_gigs_s_up_flancer` (
   `f_twitter` varchar(255) NOT NULL,
   `f_pfp` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `c_gigs_s_up_flancer`
---
-
-INSERT INTO `c_gigs_s_up_flancer` (`f_id`, `f_name`, `f_age`, `f_email`, `f_password`, `f_school`, `f_level`, `f_course`, `f_portfolio`, `f_fb`, `f_insta`, `f_linkedin`, `f_twitter`, `f_pfp`) VALUES
-(3, 'Carla Mae Jugalbot', 24, 'carla@gmail.com', '123456', 'University of Cebu: Banilad', 'Third Year', 'BS CS', 'https://www.journoportfolio.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.linkedin.com/login', 'https://twitter.com', '../C_Gigs_Photos/F_Lancer_Pfp/646df80345713_Chad.jpg'),
-(4, 'Ethan Montera', 21, 'ethanmont@gmail.com', '123456', 'University of San Carlos: Talamban Campus', 'Second Year', 'BS IT', 'https://www.journoportfolio.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.linkedin.com/login', 'h', ''),
-(5, 'Zenno Abellana', 23, 'zenn0@gmail.com', '123456', 'University of San Carlos: Talamban Campus', 'First Year', 'BS CS', 'https://www.journoportfolio.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.linkedin.com/login', '', '../C_Gigs_Photos/F_Lancer_Pfp/646df97e82976_Martin.jpg'),
-(6, 'asd', 0, 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', '', ''),
-(7, 'asd', 0, 'asdd', '$2a$10$XcIIvRj8/RgizTm4u7Gbg.GILXYuJYzXQ3AVbQyv0xAa4DQDSREoa', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', '', ''),
-(8, 'oten', 0, 'asdd@gmail.com', '$2a$10$XLQB7iMSs/DOItSLTyzm2.d.wAxetTLoLdoOvb6DNu.tTcH4aWzXa', '', '', '', '', '', '', '', '', ''),
-(9, 'oten7', 1, 'adrian2@gmail.com', '$2a$10$j/GkEPxy27pKgVmyZWM5OOlDhm8ymZPZpA3wBPtg58e8nkuhjFyXS', '1', '1', '1', '1', '', '', '', '', 'uploads\\employer\\f_pfp-1701975691180.jpg');
 
 -- --------------------------------------------------------
 
@@ -117,13 +88,6 @@ CREATE TABLE `c_gigs_works` (
   `f_cvv` varchar(255) NOT NULL,
   `emp_id` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `c_gigs_works`
---
-
-INSERT INTO `c_gigs_works` (`w_id`, `f_id`, `f_name`, `f_email`, `f_work`, `f_time`, `f_sdate`, `f_edate`, `f_description`, `f_price`, `f_cname`, `f_card`, `f_expmonth`, `f_expyear`, `f_cvv`, `emp_id`) VALUES
-(39, 9, 'oten7', 'adrian2@gmail.com', 'Programming', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', '$2a$10$jMVHPmpqHzKyFZaZialwyu9wHedmvXOWRtbsSywfmb7AoB384ZXp6', 'asd', 'asd', '$2a$10$jMVHPmpqHzKyFZaZialwyu9wHedmvXOWRtbsSywfmb7AoB384ZXp6', 0);
 
 -- --------------------------------------------------------
 
