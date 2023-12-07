@@ -2,7 +2,6 @@ const express = require("express");
 const multer  = require("multer")
 var path = require('path');
 const router = express.Router();
-
 const {
   loginEmployer,
   loginFreelancer,
@@ -12,10 +11,11 @@ const {
   applyFreelancerWork,
   updateFreelancer,
   logout,
-  getFreelancerDetails,
   deleteFreelancerWork,
   getFreelancerWorks,
   hireFreelancer,
+  deleteFreelancerAccount,
+  deleteEmployerAccount,
 } = require("../controllers/mainControllers");
 
 const {authenticateEmployer, authenticateFreelancer} = require('../middleware/mainMiddleware');
@@ -39,7 +39,6 @@ var freelancerUploads = multer.diskStorage({
 });
 
 var employerUploads = multer({ storage: employerUploads });
-
 var freelancerUploads = multer({ storage: freelancerUploads });
 
 router.route("/loginFreelancer").post(loginFreelancer);
@@ -53,6 +52,8 @@ router.route("/hireFreelancer").post(authenticateEmployer, hireFreelancer);
 router.route("/loginEmployer").post(loginEmployer);
 router.route("/registerEmployer").post(employerUploads.single('emp_pfp'), registerEmployer);
 router.route("/updateEmployer").post(employerUploads.single('emp_pfp'), authenticateEmployer, updateEmployer);
+router.route("/deleteFreelancerAccount").delete(authenticateFreelancer, deleteFreelancerAccount);
+router.route("/deleteEmployerAccount").delete(authenticateEmployer, deleteEmployerAccount);
 
 router.route("/logout").post(logout);
 

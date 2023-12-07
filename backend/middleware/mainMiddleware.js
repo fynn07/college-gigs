@@ -37,7 +37,6 @@ const authenticateFreelancer= async (
     return res.status(401).send("Freelancer is unauthenticated")
   }
   const token = authorization.split(" ")[1];
-
   try {
 
     const results = await queryDatabase("SELECT * FROM `token_blacklist` WHERE token = ?", [token]);
