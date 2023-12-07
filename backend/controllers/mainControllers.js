@@ -1,11 +1,12 @@
 const asyncHandler = require("express-async-handler");
+const path = require("path");
 const bcrypt = require("bcryptjs");
 const jwt= require("jsonwebtoken");
 
 const connection = require("../config/dbConfig");
 
 
- async function queryDatabase(query, values = []) {
+async function queryDatabase(query, values = []) {
     return new Promise((resolve, reject) => {
         connection.query(query, values, function (error, results) {
             if (error) {
@@ -44,7 +45,8 @@ const loginEmployer = asyncHandler(async (req, res) => {
         { expiresIn: 86400 * 30 }
     );
 
-    return res.status(200).json({employer, token});
+    res.status(200).json({employer, token})
+    return;
 });
 
 const loginFreelancer = asyncHandler(async (req, res) => {
@@ -86,10 +88,10 @@ const registerEmployer = asyncHandler(async (req, res) => {
         emp_insta,
         emp_linkedin,
         emp_page,
-        emp_pfp,
         emp_address,
     } = req.body;
-    console.log(req.body);
+
+    const filepath = req.file.path;
 
     const result = await queryDatabase(
         "SELECT * FROM `c_gigs_s_up_employer` where emp_email = ?",
@@ -112,10 +114,11 @@ const registerEmployer = asyncHandler(async (req, res) => {
             emp_insta,
             emp_linkedin,
             emp_page,
-            emp_pfp,
+            filepath,
             emp_address,
         ]
     );
+    console.log(newUser)
 
     return res.status(200).send("success");
 });
@@ -134,8 +137,9 @@ const registerFreelancer = asyncHandler(async (req, res) => {
         f_insta,
         f_linkedin,
         f_twitter,
-        f_pfp
     } = req.body;
+
+    const filepath = req.file.path;
 
     const result = await queryDatabase(
         "SELECT * FROM `c_gigs_s_up_flancer` where f_email= ?",
@@ -162,7 +166,7 @@ const registerFreelancer = asyncHandler(async (req, res) => {
             f_insta,
             f_linkedin,
             f_twitter,
-            f_pfp
+            filepath
         ]
     );
 
@@ -269,6 +273,8 @@ const logout = asyncHandler(async (req, res) => {
   
   return res.status(200).send("Loggged out successfully");
 })
+
+
 
 
 module.exports = {
