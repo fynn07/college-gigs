@@ -22,6 +22,9 @@ app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+app.use(express.static('uploads'));
+app.use('/uploads', express.static('uploads'));
 app.use("/", require("./routes/mainRoutes"));
 
 app.listen(port, () => {
