@@ -131,9 +131,11 @@ const registerFreelancer = asyncHandler(async (req, res) => {
     f_linkedin,
     f_twitter,
   } = req.body;
+  console.log(req.file)
 
   const filepath = req.file.path;
-  console.log(filepath);
+  console.log(filepath)
+
   const result = await queryDatabase(
     "SELECT * FROM `c_gigs_s_up_flancer` where f_email= ?",
     [f_email]
@@ -262,11 +264,12 @@ const updateEmployer = asyncHandler(async (req, res) =>  {
         emp_insta,
         emp_linkedin,
         emp_page,
-        emp_pfp,
         emp_address,
     } = req.body;
 
   const emp_id = req.tokenData.emp_id;
+
+    const filepath = req.file.path;
 
   const result = await queryDatabase(
     "SELECT * FROM `c_gigs_s_up_employer` where emp_id = ?",
@@ -285,7 +288,7 @@ const updateEmployer = asyncHandler(async (req, res) =>  {
     emp_insta,
     emp_linkedin,
     emp_page,
-    emp_pfp,
+    filepath,
     emp_address,
     emp_id,
   ]);
@@ -308,9 +311,10 @@ const updateFreelancer = asyncHandler(async (req, res) =>  {
     } = req.body;
 
     const f_id = req.tokenData.f_id;
+    const filepath = req.file.path;
 
   const query =
-    "UPDATE `c_gigs_s_up_flancer` SET f_name = ?, f_age = ?, f_school = ?, f_level = ?, f_course = ?, f_portfolio = ?, f_fb = ?, f_insta = ?, f_linkedin = ?, f_twitter = ? WHERE f_id = ?";
+    "UPDATE `c_gigs_s_up_flancer` SET f_name = ?, f_age = ?, f_school = ?, f_level = ?, f_course = ?, f_portfolio = ?, f_fb = ?, f_insta = ?, f_linkedin = ?, f_twitter = ?, f_pfp = ? WHERE f_id = ?";
 
   const freelancer = await queryDatabase(query, [
     f_name,
@@ -323,6 +327,7 @@ const updateFreelancer = asyncHandler(async (req, res) =>  {
     f_insta,
     f_linkedin,
     f_twitter,
+    filepath,
     f_id,
   ]);
 

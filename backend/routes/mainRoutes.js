@@ -44,7 +44,7 @@ var freelancerUploads = multer({ storage: freelancerUploads });
 
 router.route("/loginFreelancer").post(loginFreelancer);
 router.route("/registerFreelancer").post(freelancerUploads.single('f_pfp'), registerFreelancer);
-router.route("/updateFreelancer").post(authenticateFreelancer, updateFreelancer);
+router.route("/updateFreelancer").post(employerUploads.single('f_pfp'), authenticateFreelancer, updateFreelancer);
 router.route("/getFreelancerDetails").get(getFreelancerDetails);
 router.route("/applyFreelancerWork").post(authenticateFreelancer, applyFreelancerWork);
 router.route("/deleteFreelancerWork").delete(authenticateFreelancer, deleteFreelancerWork);
@@ -53,7 +53,7 @@ router.route("/hireFreelancer").post(authenticateEmployer, hireFreelancer);
 
 router.route("/loginEmployer").post(loginEmployer);
 router.route("/registerEmployer").post(employerUploads.single('emp_pfp'), registerEmployer);
-router.route("/updateEmployer").post(authenticateEmployer, updateEmployer);
+router.route("/updateEmployer").post(employerUploads.single('emp_pfp'), authenticateEmployer, updateEmployer);
 
 router.route("/logout").post(logout);
 
