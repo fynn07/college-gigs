@@ -10,7 +10,7 @@ function UpdateProfileEmployer() {
     try {
       const formData = new FormData(e.target);
 
-      const data = await axiosFetch.post("/updateEmployer", formData, {
+      const data = await axiosFetch.post("/employer/update", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

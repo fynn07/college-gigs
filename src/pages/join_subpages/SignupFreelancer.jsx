@@ -11,7 +11,7 @@ function SignupFreelancer() {
 
       const formData = new FormData(e.target);
 
-      const data = await axiosFetch.post("/registerFreelancer", formData, {
+      const data = await axiosFetch.post("/freelancer/register", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

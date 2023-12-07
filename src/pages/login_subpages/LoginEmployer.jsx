@@ -14,7 +14,7 @@ function LoginEmployer() {
         emp_password: e.target.password.value,
       };
 
-      const data = await axiosFetch.post("/loginEmployer", inputs);
+      const data = await axiosFetch.post("/employer/login", inputs);
 
       if (data.status !== 200) {
         throw new Error(data.data.message);
@@ -34,7 +34,7 @@ function LoginEmployer() {
         <h1 className="login_header">Employer Login</h1>
       </div>
       <div className="form-cont">
-        <form onSubmit={handleLoginEmployer} method="post" action="" 
+        <form onSubmit={handleLoginEmployer} method="post" action=""
           encType="multipart/form-data"
         >
           <label htmlFor="email">Email</label>

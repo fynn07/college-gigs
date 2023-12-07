@@ -11,7 +11,7 @@ function SignupEmployer() {
 
       const formData = new FormData(e.target);
 
-      const data = await axiosFetch.post("/registerEmployer", formData, {
+      const data = await axiosFetch.post("/employer/register", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -22,28 +22,28 @@ function Services() {
             <p className="services_title">Popular Categories:</p>
             <div className="services_grid">
               <div className="services_tile first-child">
-                <Link to="/">
+                <Link to="/jobs/design">
                   <img src={GDesign} alt="Graphic Design" />
                 </Link>
                 <p>Graphic Design</p>
               </div>
 
               <div className="services_tile second-child">
-                <Link to="/">
+                <Link to="/jobs/writing">
                   <img src={Writing} alt="Writing" />
                 </Link>
                 <p>Writing</p>
               </div>
 
               <div className="services_tile third-child">
-                <Link to="">
+                <Link to="/jobs/programming">
                   <img src={Programming} alt="Programming" />
                 </Link>
                 <p>Programming</p>
               </div>
 
               <div className="services_tile fourth-child">
-                <Link to="">
+                <Link to="/jobs/marketing">
                   <img src={Dmarketing} alt="Digital Marketing" />
                 </Link>
                 <p>Marketing</p>

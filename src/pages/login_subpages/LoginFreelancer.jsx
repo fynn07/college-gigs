@@ -13,12 +13,12 @@ function LoginFreelancer() {
         f_password: e.target.password.value,
       };
 
-      const data = await axiosFetch.post("/loginFreelancer", inputs, {});
+      const data = await axiosFetch.post("/freelancer/login", inputs, {});
 
       if (data.status !== 200) {
         throw new Error(data.data.message);
       }
-      
+
       toast.success("Freelancer logged in successfully!");
       localStorage.setItem("userDetails", JSON.stringify(data.data.freelancer));
       localStorage.setItem("token", JSON.stringify(data.data.token));

@@ -27,7 +27,6 @@ import NotFound from "./pages/NotFound";
 import Design from "./pages/work_subpages/Design";
 import Marketing from "./pages/work_subpages/Marketing";
 import Programming from "./pages/work_subpages/Programming";
-import Proofread from "./pages/work_subpages/Proofread";
 import Writing from "./pages/work_subpages/Writing";
 
 import {
@@ -80,7 +79,6 @@ function App() {
             <Route path="marketing" element={<Marketing />} />
             <Route path="design" element={<Design />} />
             <Route path="programming" element={<Programming />} />
-            <Route path="proofread" element={<Proofread />} />
             <Route path="writing" element={<Writing />} />
           </Route>
 
