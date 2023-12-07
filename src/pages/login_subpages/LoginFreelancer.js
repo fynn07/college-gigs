@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
+import { checkMissingInputs } from "../../utils/helper";
+import { toast } from "react-toastify";
 import { axiosFetch } from "../../utils/axios";
 import { Link } from "react-router-dom";
 
 function LoginFreelancer() {
-  // const [error, setError] = useState(false);
-
   async function handleLoginFreelancer(e) {
-    let inputs = {
-      f_email: e.target.email.value,
-      f_password: e.target.password.value,
-    };
+    try {
+      let inputs = {
+        f_email: e.target.email.value,
+        f_password: e.target.password.value,
+      };
 
-    console.log(inputs);
+      checkMissingInputs();
+      const data = await axiosFetch.post("/loginFreelancer", inputs);
 
-    const data = await axiosFetch.post("/loginFreelancer", inputs);
-
-    localStorage.setItem("userDetails", data.data);
-    localStorage.setItem("token", data.data.token);
+      localStorage.setItem("userDetails", data.data.freelancer);
+      localStorage.setItem("token", data.data.token);
+    } catch (e) {
+      toast.error(e.message);
+    }
   }
 
   return (
@@ -25,7 +28,7 @@ function LoginFreelancer() {
         <h1 className="login_header">Freelancer Login</h1>
       </div>
       <div className="form-cont">
-        <form method="post" action=" ">
+        <form onSubmit={handleLoginFreelancer} method="post" action=" ">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -52,7 +55,7 @@ function LoginFreelancer() {
         </form>
 
         <div className="error-message">
-          <p>Please fill out all fields.</p>
+          {/* {missingFieldsError && <p>Please fill out all fields.</p>} */}
           <br />
           <p>
             Not a Freelancer?{" "}

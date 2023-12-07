@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { axiosFetch } from "../../utils/axios";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { checkMissingInputs } from "../../utils/helper";
 import "../../styles/login_subpage.css";
 
 function LoginEmployer() {
-  const [missingFieldsError, setMissingFieldsError] = useState(true);
-
   async function handleLoginEmployer(e) {
-    let inputs = {
-      emp_email: e.target.email.value,
-      emp_password: e.target.password.value,
-    };
+    try {
+      let inputs = {
+        emp_email: e.target.email.value,
+        emp_password: e.target.password.value,
+      };
 
-    const data = await axiosFetch.post("/loginEmployer", inputs);
+      checkMissingInputs();
+      const data = await axiosFetch.post("/loginEmployer", inputs);
+
+      localStorage.setItem("userDetails", data.data.employer);
+      localStorage.setItem("token", data.data.token);
+    } catch (e) {
+      toast.error(e.message);
+    }
   }
 
   return (
@@ -21,7 +29,7 @@ function LoginEmployer() {
         <h1 className="login_header">Employer Login</h1>
       </div>
       <div className="form-cont">
-        <form method="post" action=" ">
+        <form onSubmit={handleLoginEmployer} method="post" action=" ">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -48,7 +56,7 @@ function LoginEmployer() {
         </form>
 
         <div className="error-message">
-          <p>Please fill out all fields.</p>
+          {/* {missingFieldsError && <p>Please fill out all fields.</p>} */}
           <br />
           <p>
             Not an Employer?{" "}

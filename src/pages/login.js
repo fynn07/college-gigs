@@ -6,7 +6,7 @@ function Login() {
     <div className="sign_log_container container-menu">
       <div className="join-container">
         <Link
-          to="/Login/freelancer"
+          to="/login/freelancer"
           style={{ textDecoration: "none", color: "black" }}
         >
           <div className="join-freelancer">
@@ -15,7 +15,7 @@ function Login() {
         </Link>
 
         <Link
-          to="/Login/employer"
+          to="/login/employer"
           style={{ textDecoration: "none", color: "black" }}
         >
           <div className="join-employer">

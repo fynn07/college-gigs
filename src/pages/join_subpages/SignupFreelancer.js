@@ -1,46 +1,42 @@
 import React, { useState } from "react";
+import { checkMissingInputs } from "../../utils/helper";
 import { axiosFetch } from "../../utils/axios";
 import "../../styles/subpage_styles/signup_freelancer.css";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function SignupFreelancer() {
-  const [missingFieldsError, setMissingFieldsError] = useState(true);
-
   async function handleRegisterFreelancer(e) {
-    e.preventDefault();
+    try {
+      e.preventDefault();
 
-    const inputs = {
-      f_name: e.target.name.value,
-      f_age: e.target.age.value,
-      f_email: e.target.email.value,
-      f_password: e.target.password.value,
-      f_school: e.target.school.value,
-      f_level: e.target.level.value,
-      f_course: e.target.course.value,
-      f_portfolio: e.target.port.value,
-      f_fb: e.target.fb.value,
-      f_insta: e.target.insta.value,
-      f_linkedin: e.target.linked.value,
-      f_twitter: e.target.tweet.value,
-      f_pfp: e.target.filename.value,
-    };
+      const inputs = {
+        f_name: e.target.name.value,
+        f_age: e.target.age.value,
+        f_email: e.target.email.value,
+        f_password: e.target.password.value,
+        f_school: e.target.school.value,
+        f_level: e.target.level.value,
+        f_course: e.target.course.value,
+        f_portfolio: e.target.port.value,
+        f_fb: e.target.fb.value,
+        f_insta: e.target.insta.value,
+        f_linkedin: e.target.linked.value,
+        f_twitter: e.target.tweet.value,
+        f_pfp: e.target.filename.value,
+      };
 
-    for (const key in inputs) {
-      if (!inputs[key]) {
-        setMissingFieldsError(true);
-        return;
+      checkMissingInputs();
+      const data = await axiosFetch.post("/registerFreelancer", inputs);
+
+      if (data.status !== 200) {
+        throw new Error(data.statusText);
       }
+
+      toast.success("Freelancer registered successfully!");
+    } catch (e) {
+      toast.error(e.message);
     }
-
-    const data = await axiosFetch.post("/registerFreelancer", inputs);
-
-    if (data.status !== 200) {
-      toast.error(data.statusText);
-      return;
-    }
-
-    toast.success("Freelancer registered successfully!");
   }
 
   return (
@@ -122,12 +118,12 @@ function SignupFreelancer() {
           </button>
         </form>
 
-        {missingFieldsError && (
+        {/* {missingFieldsError && (
           <div className="error-message">
             <br />
             <p>Please fill out all fields.</p>
           </div>
-        )}
+        )} */}
 
         <br />
         <div className="existing-account">

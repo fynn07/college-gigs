@@ -26,7 +26,7 @@ const loginEmployer = asyncHandler(async (req, res) => {
     [email]
   );
 
-  if (result.length == 0) {
+  if (result.length === 0) {
     return res.status(404).send("Email not found!");
   }
 

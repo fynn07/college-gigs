@@ -1,43 +1,40 @@
 import React, { useState } from "react";
+import { checkMissingInputs } from "../../utils/helper";
 import { Link } from "react-router-dom";
 import { axiosFetch } from "../../utils/axios";
 import { toast } from "react-toastify";
 import "../../styles/subpage_styles/signup_employer.css";
 
 function SignupEmployer() {
-  const [missingFieldsError, setMissingFieldsError] = useState(true);
-
   async function handleRegisterEmployer(e) {
-    e.preventDefault();
+    try {
+      e.preventDefault();
 
-    const inputs = {
-      emp_name: e.target.name.value,
-      emp_email: e.target.email.value,
-      emp_pass: e.target.password.value,
-      emp_comp: e.target.company.value,
-      emp_fb: e.target.fb.value,
-      emp_insta: e.target.insta.value,
-      emp_linkedin: e.target.linked.value,
-      emp_page: e.target.port.value,
-      emp_pfp: e.target.filename.value,
-      emp_address: e.target.address.value,
-    };
+      const inputs = {
+        emp_name: e.target.name.value,
+        emp_email: e.target.email.value,
+        emp_pass: e.target.password.value,
+        emp_comp: e.target.company.value,
+        emp_fb: e.target.fb.value,
+        emp_insta: e.target.insta.value,
+        emp_linkedin: e.target.linked.value,
+        emp_page: e.target.port.value,
+        emp_pfp: e.target.filename.value,
+        emp_address: e.target.address.value,
+      };
 
-    for (const key in inputs) {
-      if (!inputs[key]) {
-        setMissingFieldsError(true);
-        return;
+      checkMissingInputs();
+
+      const data = await axiosFetch.post("/registerEmployer", inputs);
+
+      if (data.status !== 200) {
+        throw new Error(data.statusText);
       }
+
+      toast.success("Employer registered successfully!");
+    } catch (e) {
+      toast.error(e.message);
     }
-
-    const data = await axiosFetch.post("/registerEmployer", inputs);
-
-    if (data.status !== 200) {
-      toast.error(data.statusText);
-      return;
-    }
-
-    toast.success("Employer registered successfully!");
   }
 
   return (
@@ -87,17 +84,17 @@ function SignupEmployer() {
           </button>
         </form>
 
-        {missingFieldsError && (
+        {/* {missingFieldsError && (
           <div className="error-message">
             <br />
             <p>Please fill out all fields.</p>
           </div>
-        )}
+        )} */}
 
         <br />
         <div className="existing-account">
           <p>
-            Already have an account? <Link to="/Login/employer">Log in</Link>
+            Already have an account? <Link to="/login/employer">Log in</Link>
           </p>
         </div>
       </div>
