@@ -307,10 +307,7 @@ const updateFreelancer = asyncHandler(async (req, res) =>  {
         f_twitter,
     } = req.body;
 
-
     const f_id = req.tokenData.f_id;
-
-  if (result.length == 0) return res.status(409).send("Freelancer not found!");
 
   const query =
     "UPDATE `c_gigs_s_up_flancer` SET f_name = ?, f_age = ?, f_school = ?, f_level = ?, f_course = ?, f_portfolio = ?, f_fb = ?, f_insta = ?, f_linkedin = ?, f_twitter = ? WHERE f_id = ?";
@@ -329,8 +326,13 @@ const updateFreelancer = asyncHandler(async (req, res) =>  {
     f_id,
   ]);
 
+  if(freelancer.changeRows <= 0){
+    return res.status(400).send("Something went wrong");
+  }
   return res.status(200).json(freelancer);
 });
+
+
 
 const logout = asyncHandler(async (req, res) => {
   let { authorization } = req.headers;
