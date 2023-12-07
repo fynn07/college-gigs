@@ -2,7 +2,6 @@ const express = require("express");
 const multer  = require("multer")
 var path = require('path');
 const router = express.Router();
-
 const {
   loginEmployer,
   loginFreelancer,
@@ -12,10 +11,11 @@ const {
   applyFreelancerWork,
   updateFreelancer,
   logout,
-  getFreelancerDetails,
   deleteFreelancerWork,
   getFreelancerWorks,
   hireFreelancer,
+  deleteFreelancerAccount,
+  deleteEmployerAccount,
 } = require("../controllers/mainControllers");
 
 const {authenticateEmployer, authenticateFreelancer} = require('../middleware/mainMiddleware');
@@ -39,21 +39,23 @@ var freelancerUploads = multer.diskStorage({
 });
 
 var employerUploads = multer({ storage: employerUploads });
-
 var freelancerUploads = multer({ storage: freelancerUploads });
 
-router.route("/loginFreelancer").post(loginFreelancer);
-router.route("/registerFreelancer").post(freelancerUploads.single('f_pfp'), registerFreelancer);
-router.route("/updateFreelancer").post(employerUploads.single('f_pfp'), authenticateFreelancer, updateFreelancer);
-router.route("/applyFreelancerWork").post(authenticateFreelancer, applyFreelancerWork);
-router.route("/deleteFreelancerWork").delete(authenticateFreelancer, deleteFreelancerWork);
-router.route("/getFreelancerWorks").get(getFreelancerWorks);
-router.route("/hireFreelancer").post(authenticateEmployer, hireFreelancer);
+router.post("/freelancer/login", loginFreelancer);
+router.post("/freelancer/register", freelancerUploads.single('f_pfp'), registerFreelancer);
+router.post("/freelancer/update", employerUploads.single('f_pfp'), authenticateFreelancer, updateFreelancer);
+router.post("/freelancer/applyWork", authenticateFreelancer, applyFreelancerWork);
+router.delete("/freelancer/deleteWork", authenticateFreelancer, deleteFreelancerWork);
+router.delete("/freelancer/deleteAccount", authenticateFreelancer, deleteFreelancerAccount);
+router.get("/freelancer/works", getFreelancerWorks);
 
-router.route("/loginEmployer").post(loginEmployer);
-router.route("/registerEmployer").post(employerUploads.single('emp_pfp'), registerEmployer);
-router.route("/updateEmployer").post(employerUploads.single('emp_pfp'), authenticateEmployer, updateEmployer);
 
-router.route("/logout").post(logout);
+router.post("/employer/login", loginEmployer);
+router.post("/employer/register", employerUploads.single('emp_pfp'), registerEmployer);
+router.post("/employer/update", employerUploads.single('emp_pfp'), authenticateEmployer, updateEmployer);
+router.post("/employer/hire", authenticateEmployer, hireFreelancer);
+router.delete("/employer/deleteAccount", authenticateEmployer, deleteEmployerAccount);
+
+router.post("/logout", logout);
 
 module.exports = router;

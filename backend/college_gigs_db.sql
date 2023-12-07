@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2023 at 02:50 PM
+-- Generation Time: Dec 07, 2023 at 08:22 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -53,8 +53,9 @@ INSERT INTO `c_gigs_s_up_employer` (`emp_id`, `emp_name`, `emp_email`, `emp_pass
 (5, 'Martin Meont', 'guest@gmail.com', '123456', 'Starries', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.linkedin.com/login', '', '../C_Gigs_Photos/F_Lancer_Pfp/646e040a89d88_image.jpg', 'Cebu, Philippines'),
 (6, 'Jake', 'jake@gmail.com', '123', 'DUDES', 'facebook', 'instagram', 'linkedin', 'address', '', 'address'),
 (7, 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asdf', 'asd'),
-(8, 'adrianss', 'asddd', '$2a$10$rWAFAeJpRJkkqIYDrX3ExOpn5xV0qC1Nt0cOXXQRBTAgaCS81scDG', 'asdasda', '', '', '', '', '', ''),
-(12, 'adrian', 'adrian2@gmail.com', '$2a$10$Z73dZVG8NXDBBGR9PFTGPOD7mGcf59YZD9jmeSQVx0X/rpM5KFcVG', 'asd', 'asd', 'asd', 'asd', 'asd', 'uploads\\employer\\emp_pfp-1701924936871.jpg', 'asd');
+(12, '', 'adrian2@gmail.com', '$2a$10$Z73dZVG8NXDBBGR9PFTGPOD7mGcf59YZD9jmeSQVx0X/rpM5KFcVG', '', '', '', '', '', 'uploads\\employer\\emp_pfp-1701960575447.jpeg', ''),
+(13, '', '', '$2a$10$mp75vT5SUthm7bREz5Mb.eNumngOhZM1VhT7U2HTXIOdOBUVq3RxW', '', '', '', '', '', 'uploads\\employer\\emp_pfp-1701974211190.jpg', ''),
+(14, '', '1', '$2a$10$//GmSQdnkkE8S67Iarj1A.piDy6FzJD/0XE6PagTsnLH0Nuk/xkxK', '', '', '', '', '', 'uploads\\employer\\emp_pfp-1701974378910.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -84,16 +85,13 @@ CREATE TABLE `c_gigs_s_up_flancer` (
 --
 
 INSERT INTO `c_gigs_s_up_flancer` (`f_id`, `f_name`, `f_age`, `f_email`, `f_password`, `f_school`, `f_level`, `f_course`, `f_portfolio`, `f_fb`, `f_insta`, `f_linkedin`, `f_twitter`, `f_pfp`) VALUES
-(1, 'Martin Meont', 15, 'guest@gmail.com', '$2a$10$a0SBRYy8jVhtVBkHnB.wwekrYv0LWUvOA9NuOiQsk6PsdJzhW25be', 'University of Cebu: Banilad', 'First Year', 'BS Psycho', 'https://www.journoportfolio.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.linkedin.com/login', 'https://twitter.com', '../C_Gigs_Photos/F_Lancer_Pfp/646df17f135f0_image.jpg'),
-(2, '', 0, 'martingarrix@gmail.com', '$2a$10$a0SBRYy8jVhtVBkHnB.wwekrYv0LWUvOA9NuOiQsk6PsdJzhW25be', '', '', '', '', '', '', '', '', '../C_Gigs_Photos/F_Lancer_Pfp/646df6fa6b7a6_EthanMygUy.webp'),
 (3, 'Carla Mae Jugalbot', 24, 'carla@gmail.com', '123456', 'University of Cebu: Banilad', 'Third Year', 'BS CS', 'https://www.journoportfolio.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.linkedin.com/login', 'https://twitter.com', '../C_Gigs_Photos/F_Lancer_Pfp/646df80345713_Chad.jpg'),
 (4, 'Ethan Montera', 21, 'ethanmont@gmail.com', '123456', 'University of San Carlos: Talamban Campus', 'Second Year', 'BS IT', 'https://www.journoportfolio.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.linkedin.com/login', 'h', ''),
 (5, 'Zenno Abellana', 23, 'zenn0@gmail.com', '123456', 'University of San Carlos: Talamban Campus', 'First Year', 'BS CS', 'https://www.journoportfolio.com/', 'https://www.facebook.com/', 'https://www.instagram.com/', 'https://www.linkedin.com/login', '', '../C_Gigs_Photos/F_Lancer_Pfp/646df97e82976_Martin.jpg'),
 (6, 'asd', 0, 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', '', ''),
 (7, 'asd', 0, 'asdd', '$2a$10$XcIIvRj8/RgizTm4u7Gbg.GILXYuJYzXQ3AVbQyv0xAa4DQDSREoa', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', '', ''),
-(8, 'jamesversion2', 1, 'asdd@gmail.com', '$2a$10$XLQB7iMSs/DOItSLTyzm2.d.wAxetTLoLdoOvb6DNu.tTcH4aWzXa', '1', '1', '1', '1', '1', '1', '1', '1', ''),
-(9, 'jamesversion2', 1, 'adrian2@gmail.com', '$2a$10$j/GkEPxy27pKgVmyZWM5OOlDhm8ymZPZpA3wBPtg58e8nkuhjFyXS', '1', '1', '1', '1', '1', '1', '1', '1', ''),
-(12, 'adrian', 1, 'adrian@gmail.com', '$2a$10$a0SBRYy8jVhtVBkHnB.wwekrYv0LWUvOA9NuOiQsk6PsdJzhW25be', 'cit', '2', 'cs', 'asds', 'asd', 'asd', 'asd', 'asd', 'uploads\\freelancer\\f_pfp-1701926338552.jpg');
+(8, 'oten', 0, 'asdd@gmail.com', '$2a$10$XLQB7iMSs/DOItSLTyzm2.d.wAxetTLoLdoOvb6DNu.tTcH4aWzXa', '', '', '', '', '', '', '', '', ''),
+(9, 'oten7', 1, 'adrian2@gmail.com', '$2a$10$j/GkEPxy27pKgVmyZWM5OOlDhm8ymZPZpA3wBPtg58e8nkuhjFyXS', '1', '1', '1', '1', '', '', '', '', 'uploads\\employer\\f_pfp-1701975691180.jpg');
 
 -- --------------------------------------------------------
 
@@ -125,14 +123,7 @@ CREATE TABLE `c_gigs_works` (
 --
 
 INSERT INTO `c_gigs_works` (`w_id`, `f_id`, `f_name`, `f_email`, `f_work`, `f_time`, `f_sdate`, `f_edate`, `f_description`, `f_price`, `f_cname`, `f_card`, `f_expmonth`, `f_expyear`, `f_cvv`, `emp_id`) VALUES
-(4, 2, 'Martin', 'martingarrix@gmail.com', 'Programming', 'Evening(6:00 P.M. - 12:00 A.M. PHT)', 'Monday', 'Thursday', 'Easy', ' $41.00 - $80.00 ', 'Martin Lorenz', '1111-3333-4444-2222', 'December', '2025', '2166', 12),
-(6, 2, 'Martin', 'martingarrix@gmail.com', 'Graphic Design', 'Early Morning(1:00 A.M. - 6:00 A.M. PHT)', 'Thursday', 'Saturday', 'Yes', ' $41.00 - $80.00 ', 'Martin Lorenz', '2222-3333-1111-5555', 'October', '2029', '2261', 6),
-(7, 3, 'Carla Mae Jugalbot', 'carla@gmail.com', 'Graphic Design', 'Early Morning(1:00 A.M. - 6:00 A.M. PHT)', 'Friday', 'Saturday', 'EZ', ' $41.00 - $80.00 ', 'Carla Mae Jugalbot', '2222-1111-4444-9999', 'September', '2027', '3664', 2),
-(8, 3, 'Carla Mae Jugalbot', 'carla@gmail.com', 'Programming', 'Morning(6:00 A.M. - 12:00 P.M. PHT)', 'Monday', 'Sunday', 'Helper', ' $41.00 - $80.00 ', 'Carla Mae Jugalbot', '2222-3333-1141-5561', 'March', '2029', '9721', 0),
-(9, 4, 'Ethan Montera', 'ethanmont@gmail.com', 'Proofreading and Writing', 'Morning(6:00 A.M. - 12:00 P.M. PHT)', 'Monday', 'Wednesday', 'Fast Easy', ' To Be Discussed ', 'Ethan Montera', '2222-3333-1111-6666', 'June', '2027', '9621', 0),
-(10, 4, 'Ethan Montera', 'ethanmont@gmail.com', 'Others', 'Evening(6:00 P.M. - 12:00 A.M. PHT)', 'Monday', 'Saturday', 'Fast and Efficient', ' $81.00 - $100.00 ', 'Ethan Montera', '3333-6661-2225-4545', 'December', '2028', '6553', 0),
-(11, 5, 'Zenno Abellana', 'zenn0@gmail.com', 'Proofreading and Writing', 'Afternoon(12:00 P.M. - 6:00 P.M. PHT)', 'Monday', 'Thursday', 'Fast', ' $21.00 - $40.00 ', 'Zenno G. Abellana', '2332-4411-5512-7712', 'August', '2026', '6488', 0),
-(12, 5, 'Zenno Abellana', 'zenn0@gmail.com', 'Others', 'Evening(6:00 P.M. - 12:00 A.M. PHT)', 'Thursday', 'Saturday', 'Helper for people in need', ' $5.00 - $20.00 ', 'Zenno G. Abellana', '1111-6969-4206-9420', 'October', '2025', '6969', 0);
+(39, 9, 'oten7', 'adrian2@gmail.com', 'Programming', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', '$2a$10$jMVHPmpqHzKyFZaZialwyu9wHedmvXOWRtbsSywfmb7AoB384ZXp6', 'asd', 'asd', '$2a$10$jMVHPmpqHzKyFZaZialwyu9wHedmvXOWRtbsSywfmb7AoB384ZXp6', 0);
 
 -- --------------------------------------------------------
 
@@ -144,15 +135,6 @@ CREATE TABLE `token_blacklist` (
   `token` varchar(1024) NOT NULL,
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `token_blacklist`
---
-
-INSERT INTO `token_blacklist` (`token`, `id`) VALUES
-('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbXBsb3llciI6eyJlbXBfaWQiOjksImVtcF9uYW1lIjoiYWRyaWFuMTIzIiwiZW1wX2VtYWlsIjoiYWRyaWFuQGdtYWlsLmNvbSIsImVtcF9wYXNzIjoiJDJhJDEwJFdkVzNXOU5paWpCWVREZlNDLnZPVHUvb3N0SUJRWlV2Z2o1NVFpRGlPZ2NsQWkzYWF5RUUuIiwiZW1wX2NvbXAiOiIiLCJlbXBfZmIiOiIiLCJlbXBfaW5zdGEiOiIiLCJlbXBfbGlua2VkaW4iOiIiLCJlbXBfcGFnZSI6IiIsImVtcF9wZnAiOiIiLCJlbXBfYWRkcmVzcyI6IiJ9LCJpYXQiOjE3MDE4ODQ4OTAsImV4cCI6MTcwNDQ3Njg5MH0.KWSVUX3X9wZU7fCvkUQL6bHPPV7L-FYEJ_iy-kIjF0Y', 11),
-('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbXBsb3llciI6eyJlbXBfaWQiOjksImVtcF9uYW1lIjoiYWRyaWFuMTIzIiwiZW1wX2VtYWlsIjoiYWRyaWFuQGdtYWlsLmNvbSIsImVtcF9wYXNzIjoiJDJhJDEwJFdkVzNXOU5paWpCWVREZlNDLnZPVHUvb3N0SUJRWlV2Z2o1NVFpRGlPZ2NsQWkzYWF5RUUuIiwiZW1wX2NvbXAiOiIiLCJlbXBfZmIiOiIiLCJlbXBfaW5zdGEiOiIiLCJlbXBfbGlua2VkaW4iOiIiLCJlbXBfcGFnZSI6IiIsImVtcF9wZnAiOiIiLCJlbXBfYWRkcmVzcyI6IiJ9LCJpYXQiOjE3MDE4ODUyMDgsImV4cCI6MTcwNDQ3NzIwOH0.valY-oHb2jiUwlBDrYnKtwsVjUIHRCe1mQLxds4c7Fo', 12),
-('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVlbGFuY2VyIjp7ImZfaWQiOjksImZfbmFtZSI6ImFzZCIsImZfYWdlIjowLCJmX2VtYWlsIjoiYWRyaWFuMkBnbWFpbC5jb20iLCJmX3Bhc3N3b3JkIjoiJDJhJDEwJGovR2tFUHh5MjdwS2dWbXlaV001T09sRGhtOHltWlBacEEzd0JQdGc1OGU4bmt1aGpGeVhTIiwiZl9zY2hvb2wiOiJhc2QiLCJmX2xldmVsIjoiYXNkIiwiZl9jb3Vyc2UiOiJhc2QiLCJmX3BvcnRmb2xpbyI6ImFzZCIsImZfZmIiOiJhc2QiLCJmX2luc3RhIjoiYXNkIiwiZl9saW5rZWRpbiI6ImFzZCIsImZfdHdpdHRlciI6IiIsImZfcGZwIjoiIn0sImlhdCI6MTcwMTg4NTI0MiwiZXhwIjoxNzA0NDc3MjQyfQ.ACERKaQf54iO-MAfK7k6BYWHr0K9qOs0KDCrvw2OSoY', 13);
 
 --
 -- Indexes for dumped tables
@@ -174,7 +156,9 @@ ALTER TABLE `c_gigs_s_up_flancer`
 -- Indexes for table `c_gigs_works`
 --
 ALTER TABLE `c_gigs_works`
-  ADD PRIMARY KEY (`w_id`);
+  ADD PRIMARY KEY (`w_id`),
+  ADD KEY `c_gigs_works_ibfk_1` (`f_id`),
+  ADD KEY `c_gigs_works_ibfk_2` (`emp_id`);
 
 --
 -- Indexes for table `token_blacklist`
@@ -190,25 +174,35 @@ ALTER TABLE `token_blacklist`
 -- AUTO_INCREMENT for table `c_gigs_s_up_employer`
 --
 ALTER TABLE `c_gigs_s_up_employer`
-  MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `c_gigs_s_up_flancer`
 --
 ALTER TABLE `c_gigs_s_up_flancer`
-  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `f_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `c_gigs_works`
 --
 ALTER TABLE `c_gigs_works`
-  MODIFY `w_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `w_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `token_blacklist`
 --
 ALTER TABLE `token_blacklist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `c_gigs_works`
+--
+ALTER TABLE `c_gigs_works`
+  ADD CONSTRAINT `c_gigs_works_ibfk_1` FOREIGN KEY (`f_id`) REFERENCES `c_gigs_s_up_flancer` (`f_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -153,7 +153,6 @@
 ### General Operations
 
 #### Logout
-
 - **Route:** `/logout`
 - **Method:** `POST`
 - **Description:** Logs the user out of the system by blacklisting the provided JWT token.
