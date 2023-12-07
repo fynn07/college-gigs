@@ -133,7 +133,7 @@ const registerFreelancer = asyncHandler(async (req, res) => {
   } = req.body;
 
   const filepath = req.file.path;
-
+  console.log(filepath);
   const result = await queryDatabase(
     "SELECT * FROM `c_gigs_s_up_flancer` where f_email= ?",
     [f_email]
