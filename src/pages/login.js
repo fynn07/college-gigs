@@ -1,25 +1,30 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-function login() {
+function Login() {
   return (
-      <div className='sign_log_container container-menu'>
-        <div className='join-container'>
-          <Link to='/Login/freelancer' style={{textDecoration: 'none', color: 'black'}}>
-            <div className='join-freelancer'>
-              <h2>Freelancer Login</h2>
-            </div>
-          </Link>
+    <div className="sign_log_container container-menu">
+      <div className="join-container">
+        <Link
+          to="/Login/freelancer"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <div className="join-freelancer">
+            <h2>Freelancer Login</h2>
+          </div>
+        </Link>
 
-          <Link to='/Login/employer' style={{textDecoration: 'none', color: 'black'}}>
-            <div className='join-employer'>
-              <h2>Employer Login</h2>
-            </div>
-          </Link>
-
-        </div>
+        <Link
+          to="/Login/employer"
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <div className="join-employer">
+            <h2>Employer Login</h2>
+          </div>
+        </Link>
       </div>
-  )
+    </div>
+  );
 }
 
-export default login
+export default Login;

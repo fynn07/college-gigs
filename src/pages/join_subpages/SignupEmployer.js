@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosFetch } from "../../utils/axios";
+import { toast } from "react-toastify";
 import "../../styles/subpage_styles/signup_employer.css";
 
-function signup_employer() {
+function SignupEmployer() {
+  const [missingFieldsError, setMissingFieldsError] = useState(true);
+
   async function handleRegisterEmployer(e) {
     e.preventDefault();
 
@@ -20,14 +23,21 @@ function signup_employer() {
       emp_address: e.target.address.value,
     };
 
-    console.log(inputs);
+    for (const key in inputs) {
+      if (!inputs[key]) {
+        setMissingFieldsError(true);
+        return;
+      }
+    }
 
-    const data = await axiosFetch.post("/registerFreelancer", inputs);
+    const data = await axiosFetch.post("/registerEmployer", inputs);
 
-    if (data.status != 200) {
-      // error here
+    if (data.status !== 200) {
+      toast.error(data.statusText);
       return;
     }
+
+    toast.success("Employer registered successfully!");
   }
 
   return (
@@ -76,10 +86,14 @@ function signup_employer() {
             Sign Up
           </button>
         </form>
-        <div className="error-message">
-          <br />
-          <p>Please fill out all fields.</p>
-        </div>
+
+        {missingFieldsError && (
+          <div className="error-message">
+            <br />
+            <p>Please fill out all fields.</p>
+          </div>
+        )}
+
         <br />
         <div className="existing-account">
           <p>
@@ -91,4 +105,4 @@ function signup_employer() {
   );
 }
 
-export default signup_employer;
+export default SignupEmployer;

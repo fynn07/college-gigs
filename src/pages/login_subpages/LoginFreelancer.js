@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { axiosFetch } from "../../utils/axios";
 import { Link } from "react-router-dom";
 
-function login() {
+function LoginFreelancer() {
   // const [error, setError] = useState(false);
 
   async function handleLoginFreelancer(e) {
@@ -14,6 +14,9 @@ function login() {
     console.log(inputs);
 
     const data = await axiosFetch.post("/loginFreelancer", inputs);
+
+    localStorage.setItem("userDetails", data.data);
+    localStorage.setItem("token", data.data.token);
   }
 
   return (
@@ -64,4 +67,4 @@ function login() {
   );
 }
 
-export default login;
+export default LoginFreelancer;

@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { axiosFetch } from "../../utils/axios";
 import "../../styles/subpage_styles/signup_freelancer.css";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
-function signup_freelancer() {
+function SignupFreelancer() {
+  const [missingFieldsError, setMissingFieldsError] = useState(true);
+
   async function handleRegisterFreelancer(e) {
     e.preventDefault();
 
@@ -23,9 +26,21 @@ function signup_freelancer() {
       f_pfp: e.target.filename.value,
     };
 
+    for (const key in inputs) {
+      if (!inputs[key]) {
+        setMissingFieldsError(true);
+        return;
+      }
+    }
+
     const data = await axiosFetch.post("/registerFreelancer", inputs);
 
-    // i handle pa nako ang state management
+    if (data.status !== 200) {
+      toast.error(data.statusText);
+      return;
+    }
+
+    toast.success("Freelancer registered successfully!");
   }
 
   return (
@@ -107,10 +122,13 @@ function signup_freelancer() {
           </button>
         </form>
 
-        <div className="error-message">
-          <br />
-          <p>Please fill out all fields.</p>
-        </div>
+        {missingFieldsError && (
+          <div className="error-message">
+            <br />
+            <p>Please fill out all fields.</p>
+          </div>
+        )}
+
         <br />
         <div className="existing-account">
           <p>
@@ -122,4 +140,4 @@ function signup_freelancer() {
   );
 }
 
-export default signup_freelancer;
+export default SignupFreelancer;

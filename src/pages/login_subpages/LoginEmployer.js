@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { axiosFetch } from "../../utils/axios";
 import { Link } from "react-router-dom";
 import "../../styles/login_subpage.css";
-function login() {
+
+function LoginEmployer() {
+  const [missingFieldsError, setMissingFieldsError] = useState(true);
+
   async function handleLoginEmployer(e) {
     let inputs = {
       emp_email: e.target.email.value,
@@ -60,4 +63,4 @@ function login() {
   );
 }
 
-export default login;
+export default LoginEmployer;
