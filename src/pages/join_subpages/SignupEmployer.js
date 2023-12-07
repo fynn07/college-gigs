@@ -19,7 +19,7 @@ function SignupEmployer() {
         emp_insta: e.target.insta.value,
         emp_linkedin: e.target.linked.value,
         emp_page: e.target.port.value,
-        emp_pfp: e.target.filename.value,
+        emp_pfp: e.target.emp_pfp.value,
         emp_address: e.target.address.value,
       };
 
@@ -77,7 +77,7 @@ function SignupEmployer() {
           <input type="text" id="linked" name="linked" />
 
           <label htmlFor="pfp">Upload Profile Picture</label>
-          <input type="file" id="myFile" name="filename" />
+          <input type="file" id="myFile" name="emp_pfp" />
 
           <button type="submit" name="submit">
             Sign Up

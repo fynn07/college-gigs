@@ -23,10 +23,11 @@ function SignupFreelancer() {
         f_insta: e.target.insta.value,
         f_linkedin: e.target.linked.value,
         f_twitter: e.target.tweet.value,
-        f_pfp: e.target.filename.value,
+        f_pfp: e.target.f_pfp.value,
       };
 
       checkMissingInputs();
+      console.log(inputs);
       const data = await axiosFetch.post("/registerFreelancer", inputs);
 
       if (data.status !== 200) {
@@ -111,7 +112,7 @@ function SignupFreelancer() {
           <input type="text" id="tweet" name="tweet" />
 
           <label htmlFor="pfp">Upload Profile Picture</label>
-          <input type="file" id="myFile" name="filename" />
+          <input type="file" id="myFile" name="f_pfp" />
 
           <button type="submit" name="signup">
             Sign Up

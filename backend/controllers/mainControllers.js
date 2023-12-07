@@ -54,7 +54,7 @@ const loginFreelancer = asyncHandler(async (req, res) => {
     [email]
   );
 
-  if (result.length == 0) {
+  if (result.length === 0) {
     return res.status(404).send("Email not found!");
   }
 
@@ -321,8 +321,6 @@ const updateFreelancer = asyncHandler(async (req, res) => {
 
   const f_id = req.tokenData.f_id;
 
-  if (result.length == 0) return res.status(409).send("Freelancer not found!");
-
   const query =
     "UPDATE `c_gigs_s_up_flancer` SET f_name = ?, f_age = ?, f_school = ?, f_level = ?, f_course = ?, f_portfolio = ?, f_fb = ?, f_insta = ?, f_linkedin = ?, f_twitter = ? WHERE f_id = ?";
 
@@ -340,6 +338,9 @@ const updateFreelancer = asyncHandler(async (req, res) => {
     f_id,
   ]);
 
+  if (freelancer.changeRows <= 0) {
+    return res.status(400).send("Something went wrong");
+  }
   return res.status(200).json(freelancer);
 });
 

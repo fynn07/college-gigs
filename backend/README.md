@@ -113,16 +113,30 @@
 - [x] `f_insta` new freelancer instagram
 - [x] `f_linkedin` new frealancer linkedin
 - [x] `f_twitter` new freelancer twitter
-
 - **Request File:**
 *all fields are optional*
 - [x] `f_pfp` new profile picture
 
 #### Apply for Work
-- **Route:** `/api/freelancer/work/apply`
+- **Route:** `/applyFreelancerWork`
 - **Method:** `POST`
 - **Description:** Enables the freelancer to apply for a specific work opportunity.
-- **Request Body:** (Details of the work to apply for)
+- **Request Body:** 
+
+- [x] `f_work`
+- [x] `f_time`
+- [x] f_sdate,
+f_edate,
+f_description,
+f_price,
+f_cname,
+f_card,
+f_expmonth,
+f_expyear,
+f_cvv        
+
+
+
 
 #### Get Freelancer's Works
 - **Route:** `/api/freelancer/works`
