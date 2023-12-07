@@ -20,9 +20,7 @@ async function queryDatabase(query, values = []) {
 
 const loginEmployer = asyncHandler(async (req, res) => {
     const { emp_email, emp_password } = req.body;
-
-    const fields = [emp_email, emp_password];
-
+    
     let result = await queryDatabase(
         "SELECT * FROM `c_gigs_s_up_employer` where emp_email = ?",
         [emp_email]
@@ -31,7 +29,6 @@ const loginEmployer = asyncHandler(async (req, res) => {
     if (result.length === 0) {
         return res.status(404).send("Email not found!");
     }
-
     const employer = result[0];
     const pass = employer.emp_pass;
     const passwordMatch = await bcrypt.compare(emp_password, pass);
@@ -74,12 +71,18 @@ const loginFreelancer = asyncHandler(async (req, res) => {
 
     let query = "SELECT * FROM `c_gigs_works` WHERE f_id = ?";
     const works = await queryDatabase(query, [freelancer.f_id]);
-
+    
+    let filteredworks = {};
+    if (works.length > 0) {
+        const { f_card, f_cvv, ...rest } = works[0];
+        filteredworks = { ...rest };
+    }
+    
     let token = jwt.sign({ freelancer }, process.env.JWT_SECRET, {
         expiresIn: 86400 * 30,
     });
-
-    return res.status(200).json({ freelancer: filteredFreelancer, token, works});
+    
+    return res.status(200).json({ freelancer: filteredFreelancer, token, works: filteredworks });
 });
 
 const registerEmployer = asyncHandler(async (req, res) => {
@@ -143,6 +146,7 @@ const registerFreelancer = asyncHandler(async (req, res) => {
     } = req.body;
 
     const filepath = req.file.path;
+
     const result = await queryDatabase(
         "SELECT * FROM `c_gigs_s_up_flancer` where f_email= ?",
         [f_email]
@@ -194,14 +198,12 @@ const applyFreelancerWork = asyncHandler(async (req, res) => {
         f_cvv,
     } = req.body;
 
-
     const salt = bcrypt.genSaltSync(10);
     f_card = bcrypt.hashSync(f_card, salt);
     f_cvv = bcrypt.hashSync(f_cvv, salt);
 
     const query =
-        "INSERT INTO `c_gigs_works` (f_id, f_name, f_email, f_work, f_time, f_sdate, f_edate, f_description, f_price, f_cname, f_card, f_expmonth, f_expyear, f_cvv, emp_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+        "INSERT INTO `c_gigs_works` (f_id, f_name, f_email, f_work, f_time, f_sdate, f_edate, f_description, f_price, f_cname, f_card, f_expmonth, f_expyear, f_cvv) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     const result = await queryDatabase(query, [
         f_id,
@@ -218,7 +220,6 @@ const applyFreelancerWork = asyncHandler(async (req, res) => {
         f_expmonth,
         f_expyear,
         f_cvv,
-        1,
     ]);
     if (result.length >= 0) {
         return res.status(400).send("Something went wrong");
@@ -265,7 +266,7 @@ const hireFreelancer = asyncHandler(async (req, res) => {
 });
 
 const updateEmployer = asyncHandler(async (req, res) => {
-    let {
+    const {
         emp_name,
         emp_comp,
         emp_fb,
@@ -278,33 +279,78 @@ const updateEmployer = asyncHandler(async (req, res) => {
 
     const emp_id = req.tokenData.emp_id;
 
+    let filepath;
+
+    if(req.file){
+        filepath = req.file.path;
+    }
+
     const result = await queryDatabase(
-        "SELECT * FROM `c_gigs_s_up_employer` where emp_id = ?",
+        "SELECT * FROM `c_gigs_s_up_employer` WHERE emp_id = ?",
         [emp_id]
     );
 
     if (result.length === 0) return res.status(409).send("Employer not found!");
 
-    const query =
-        "UPDATE `c_gigs_s_up_employer` SET emp_name = ?, emp_comp = ?, emp_fb = ?, emp_insta = ?, emp_linkedin = ?, emp_page = ?, emp_pfp = ?, emp_address = ? WHERE emp_id = ?";
+    const queryColumns = [];
+    const queryValues = [];
 
-    const employer = await queryDatabase(query, [
-        emp_name,
-        emp_comp,
-        emp_fb,
-        emp_insta,
-        emp_linkedin,
-        emp_page,
-        emp_pfp,
-        emp_address,
-        emp_id,
-    ]);
+    if (emp_name !== null && emp_name !== undefined) {
+        queryColumns.push('emp_name = ?');
+        queryValues.push(emp_name);
+    }
+    if (emp_comp !== null && emp_comp !== undefined) {
+        queryColumns.push('emp_comp = ?');
+        queryValues.push(emp_comp);
+    }
+    if (emp_fb !== null && emp_fb !== undefined) {
+        queryColumns.push('emp_fb = ?');
+        queryValues.push(emp_fb);
+    }
+    if (emp_insta !== null && emp_insta !== undefined) {
+        queryColumns.push('emp_insta = ?');
+        queryValues.push(emp_insta);
+    }
+    if (emp_linkedin !== null && emp_linkedin !== undefined) {
+        queryColumns.push('emp_linkedin = ?');
+        queryValues.push(emp_linkedin);
+    }
+    if (emp_page !== null && emp_page !== undefined) {
+        queryColumns.push('emp_page = ?');
+        queryValues.push(emp_page);
+    }
+    if (emp_pfp !== null && emp_pfp !== undefined) {
+        queryColumns.push('emp_pfp = ?');
+        queryValues.push(emp_pfp);
+    }
 
-    return res.status(200).json(employer);
+    if (emp_address !== null && emp_address !== undefined) {
+        queryColumns.push('emp_address = ?');
+        queryValues.push(emp_address);
+    }
+
+    if(filepath !== null && filepath !== undefined){
+        queryColumns.push('f_pfp = ?');
+        queryValues.push(filepath);
+    }
+
+    queryValues.push(emp_id);
+
+    let query = 'UPDATE `c_gigs_s_up_employer` SET ';
+    query += queryColumns.join(', ');
+    query += ' WHERE emp_id = ?';
+
+    if (queryColumns.length === 0) {
+        return res.status(400).send('No valid fields to update');
+    }
+
+    await queryDatabase(query, [...queryValues, emp_id])
+    return res.status(200).send("Success") ;
 });
 
+
 const updateFreelancer = asyncHandler(async (req, res) => {
-    let {
+    const {
         f_name,
         f_age,
         f_school,
@@ -318,29 +364,76 @@ const updateFreelancer = asyncHandler(async (req, res) => {
     } = req.body;
 
     const f_id = req.tokenData.f_id;
+    let filepath;
 
-    const query =
-        "UPDATE `c_gigs_s_up_flancer` SET f_name = ?, f_age = ?, f_school = ?, f_level = ?, f_course = ?, f_portfolio = ?, f_fb = ?, f_insta = ?, f_linkedin = ?, f_twitter = ? WHERE f_id = ?";
-
-    const freelancer = await queryDatabase(query, [
-        f_name,
-        f_age,
-        f_school,
-        f_level,
-        f_course,
-        f_portfolio,
-        f_fb,
-        f_insta,
-        f_linkedin,
-        f_twitter,
-        f_id,
-    ]);
-
-    if (freelancer.changeRows <= 0) {
-        return res.status(400).send("Something went wrong");
+    if (req.file) {
+        filepath = req.file.path;
     }
-    return res.status(200).json(freelancer);
+
+    const queryColumns = [];
+    const queryValues = [];
+
+    if (f_name !== null && f_name !== undefined) {
+        queryColumns.push('f_name = ?');
+        queryValues.push(f_name);
+    }
+    if (f_age !== null && f_age !== undefined) {
+        queryColumns.push('f_age = ?');
+        queryValues.push(f_age);
+    }
+    if (f_school !== null && f_school !== undefined) {
+        queryColumns.push('f_school = ?');
+        queryValues.push(f_school);
+    }
+    if (f_level !== null && f_level !== undefined) {
+        queryColumns.push('f_level = ?');
+        queryValues.push(f_level);
+    }
+    if (f_course !== null && f_course !== undefined) {
+        queryColumns.push('f_course = ?');
+        queryValues.push(f_course);
+    }
+    if (f_portfolio !== null && f_portfolio !== undefined) {
+        queryColumns.push('f_portfolio = ?');
+        queryValues.push(f_portfolio);
+    }
+    if (f_fb !== null && f_fb !== undefined) {
+        queryColumns.push('f_fb = ?');
+        queryValues.push(f_fb);
+    }
+    if (f_insta !== null && f_insta !== undefined) {
+        queryColumns.push('f_insta = ?');
+        queryValues.push(f_insta);
+    }
+    if (f_linkedin !== null && f_linkedin !== undefined) {
+        queryColumns.push('f_linkedin = ?');
+        queryValues.push(f_linkedin);
+    }
+    if (f_twitter !== null && f_twitter !== undefined) {
+        queryColumns.push('f_twitter = ?');
+        queryValues.push(f_twitter);
+    }
+
+    if(filepath !== null && filepath !== undefined){
+        queryColumns.push('f_pfp = ?');
+        queryValues.push(filepath);
+    }
+
+    queryValues.push(f_id);
+
+    let query = 'UPDATE `c_gigs_s_up_flancer` SET ';
+    query += queryColumns.join(', ');
+    query += ' WHERE f_id = ?';
+
+    if (queryColumns.length === 0) {
+        return res.status(400).send('No valid fields to update');
+    }
+
+    await queryDatabase(query, [...queryValues, f_id])
+
+    return res.status(200).send("SUCCESS")
 });
+
 
 const logout = asyncHandler(async (req, res) => {
     let { authorization } = req.headers;
@@ -355,20 +448,29 @@ const logout = asyncHandler(async (req, res) => {
 
 const deleteFreelancerAccount = asyncHandler(async (req, res) => {
     const { f_id } = req.tokenData;
-    const query = "DELETE FROM `c_gigs_s_up_flancer` WHERE f_id = ?";
+    let query = "DELETE FROM `c_gigs_s_up_flancer` WHERE f_id = ?";
     await queryDatabase(query, [f_id]);
+
+    let { authorization } = req.headers;
+    const token = authorization.split(" ")[1];
+    query = "INSERT INTO `token_blacklist` (token) VALUES (?)";
+    await queryDatabase(query, [token]);
 
     return res.status(200).send("Deleted account");
 });
 
 const deleteEmployerAccount = asyncHandler(async (req, res) => {
     const { emp_id } = req.tokenData;
-    const query = "DELETE FROM `c_gigs_s_up_employer` WHERE emp_id = ?";
+    let query = "DELETE FROM `c_gigs_s_up_employer` WHERE emp_id = ?";
     await queryDatabase(query, [emp_id]);
+
+    let { authorization } = req.headers;
+    const token = authorization.split(" ")[1];
+    query = "INSERT INTO `token_blacklist` (token) VALUES (?)";
+    await queryDatabase(query, [token]);
 
     return res.status(200).send("Deleted account");
 });
-
 
 module.exports = {
     queryDatabase,
