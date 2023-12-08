@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Sirach from "../components/resources/founders/Sirach.JPG";
 import Jab from "../components/resources/founders/Jab.jpg";
+import Ryka from "../components/resources/founders/ryka.jpg";
+import Zraim from "../components/resources/founders/Zraim.jpg";
+import James from "../components/resources/founders/James.jpg";
 
 
 import "../styles/about.css";
@@ -30,8 +33,18 @@ function About() {
             <p>Sirach</p>
             <img src={Sirach} alt="Sirach" className="portrait Sirach" />
           </div>
-
-          
+          <div className="member_container" id="member-3">
+            <p>Ryka</p>
+            <img src={Ryka} alt="Ryka" className="portrait ryka" />
+          </div>
+          <div className="member_container" id="member-4">
+            <p>Zraim</p>
+            <img src={Zraim} alt="Zraim" className="portrait zraim" />
+          </div>
+          <div className="member_container" id="member-4">
+            <p>James</p>
+            <img src={James} alt="James" className="portrait James" />
+          </div>
         </div>
 
         <div id="vm_section">
