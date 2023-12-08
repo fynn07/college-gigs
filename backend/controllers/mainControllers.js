@@ -471,6 +471,28 @@ const deleteEmployerAccount = asyncHandler(async (req, res) => {
   return res.status(200).send("Deleted account");
 });
 
+const getFreelancer = asyncHandler(async (req, res) => {
+    const f_id = req.query.f_id; 
+
+    const query = "SELECT * FROM `c_gigs_s_up_flancer` WHERE f_id = ?";
+    const freelancer =  await queryDatabase(query, [f_id])
+
+    const { f_password: _, ...filteredFreelancer} = freelancer[0];
+    return res.status(200).json(filteredFreelancer)
+})
+
+const getEmployer = asyncHandler(async (req, res) => {
+    const emp_id = req.query.emp_id;
+    const query = "SELECT * FROM `c_gigs_s_up_employer` WHERE emp_id = ?";
+    const employer = await queryDatabase(query, [emp_id]);
+
+    const { emp_pass: _, ...filteredEmployer} = employer[0];
+
+    return res.status(200).json(filteredEmployer);
+})
+
+
+
 module.exports = {
   queryDatabase,
   loginEmployer,
@@ -486,4 +508,7 @@ module.exports = {
   logout,
   deleteFreelancerAccount,
   deleteEmployerAccount,
+getFreelancer,
+getEmployer
+
 };
