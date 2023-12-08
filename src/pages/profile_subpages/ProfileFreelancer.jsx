@@ -34,6 +34,7 @@ function ProfileFreelancer() {
   }
 
   return (
+    <div className="profile-container">
     <div className="profile">
       <div className="left-side">
         <div className="personal-info">
@@ -179,6 +180,7 @@ function ProfileFreelancer() {
         </div>
       </div>
     </div >
+    </div>
   );
 }
 

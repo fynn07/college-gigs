@@ -65,8 +65,9 @@ function ProfileEmployer() {
 
   return (
     <>
+    <div className="profile-container">
       <div className="profile">
-        <div className="left-side">
+        <div className="left-side" id="emp">
           <div className="personal-info">
             {/* <img src="/College_Gigs/Blank.jpg" alt="Profile " /> */}
             <img src={`http://localhost:6969/${employer.emp_pfp}`} alt="Profile" />
@@ -97,7 +98,7 @@ function ProfileEmployer() {
         }
         <div className="port">
           <p><b>Portfolio Link</b></p>
-          <a rel="noopener noreferrer" target="_blank" href="https://kekma.net/zzart.mp4" className="portfolio-link">
+          <a rel="noopener noreferrer" target="_blank" href="https://www.google.com" className="portfolio-link">
             {employer.emp_name}'s Portfolio
           </a>
         </div>
@@ -180,6 +181,7 @@ function ProfileEmployer() {
           }
         </div>
       </div>
+    </div>
     </>
   );
 }
