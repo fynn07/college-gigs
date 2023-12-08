@@ -39,7 +39,7 @@ const loginEmployer = asyncHandler(async (req, res) => {
     return res.status(401).send("Password do not match!");
   }
 
-  let token = jwt.sign({ employer }, process.env.JWT_SECRET, {
+  let token = jwt.sign({ employer: filteredEmployer }, process.env.JWT_SECRET, {
     expiresIn: 86400 * 30,
   });
 
@@ -78,9 +78,13 @@ const loginFreelancer = asyncHandler(async (req, res) => {
     filteredworks = { ...rest };
   }
 
-  let token = jwt.sign({ freelancer }, process.env.JWT_SECRET, {
-    expiresIn: 86400 * 30,
-  });
+  let token = jwt.sign(
+    { freelancer: filteredFreelancer },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: 86400 * 30,
+    }
+  );
 
   return res
     .status(200)
@@ -297,36 +301,35 @@ const updateEmployer = asyncHandler(async (req, res) => {
   const queryColumns = [];
   const queryValues = [];
 
-  if (emp_name !== null && emp_name !== undefined) {
+  if (emp_name) {
     queryColumns.push("emp_name = ?");
     queryValues.push(emp_name);
   }
-  if (emp_comp !== null && emp_comp !== undefined) {
+  if (emp_comp) {
     queryColumns.push("emp_comp = ?");
     queryValues.push(emp_comp);
   }
-  if (emp_fb !== null && emp_fb !== undefined) {
+  if (emp_fb) {
     queryColumns.push("emp_fb = ?");
     queryValues.push(emp_fb);
   }
-  if (emp_insta !== null && emp_insta !== undefined) {
+  if (emp_insta) {
     queryColumns.push("emp_insta = ?");
     queryValues.push(emp_insta);
   }
-  if (emp_linkedin !== null && emp_linkedin !== undefined) {
+  if (emp_linkedin) {
     queryColumns.push("emp_linkedin = ?");
     queryValues.push(emp_linkedin);
   }
-  if (emp_page !== null && emp_page !== undefined) {
+  if (emp_page) {
     queryColumns.push("emp_page = ?");
     queryValues.push(emp_page);
   }
-  if (emp_pfp !== null && emp_pfp !== undefined) {
+  if (emp_pfp) {
     queryColumns.push("emp_pfp = ?");
     queryValues.push(emp_pfp);
   }
-
-  if (emp_address !== null && emp_address !== undefined) {
+  if (emp_address) {
     queryColumns.push("emp_address = ?");
     queryValues.push(emp_address);
   }
@@ -352,10 +355,11 @@ const updateEmployer = asyncHandler(async (req, res) => {
     "SELECT * FROM `c_gigs_s_up_employer` WHERE emp_id = ?",
     [emp_id]
   );
-  let token = jwt.sign({ employer }, process.env.JWT_SECRET, {
+  const { emp_pass, ...filteredEmployer } = employer[0];
+  let token = jwt.sign({ employer: filteredEmployer }, process.env.JWT_SECRET, {
     expiresIn: 86400 * 30,
   });
-  return res.status(200).json({ employer: employer[0], token });
+  return res.status(200).json({ employer: filteredEmployer, token });
 });
 
 const updateFreelancer = asyncHandler(async (req, res) => {
@@ -382,43 +386,43 @@ const updateFreelancer = asyncHandler(async (req, res) => {
   const queryColumns = [];
   const queryValues = [];
 
-  if (f_name !== null && f_name !== undefined) {
+  if (f_name) {
     queryColumns.push("f_name = ?");
     queryValues.push(f_name);
   }
-  if (f_age !== null && f_age !== undefined) {
+  if (f_age) {
     queryColumns.push("f_age = ?");
     queryValues.push(f_age);
   }
-  if (f_school !== null && f_school !== undefined) {
+  if (f_school) {
     queryColumns.push("f_school = ?");
     queryValues.push(f_school);
   }
-  if (f_level !== null && f_level !== undefined) {
+  if (f_level) {
     queryColumns.push("f_level = ?");
     queryValues.push(f_level);
   }
-  if (f_course !== null && f_course !== undefined) {
+  if (f_course) {
     queryColumns.push("f_course = ?");
     queryValues.push(f_course);
   }
-  if (f_portfolio !== null && f_portfolio !== undefined) {
+  if (f_portfolio) {
     queryColumns.push("f_portfolio = ?");
     queryValues.push(f_portfolio);
   }
-  if (f_fb !== null && f_fb !== undefined) {
+  if (f_fb) {
     queryColumns.push("f_fb = ?");
     queryValues.push(f_fb);
   }
-  if (f_insta !== null && f_insta !== undefined) {
+  if (f_insta) {
     queryColumns.push("f_insta = ?");
     queryValues.push(f_insta);
   }
-  if (f_linkedin !== null && f_linkedin !== undefined) {
+  if (f_linkedin) {
     queryColumns.push("f_linkedin = ?");
     queryValues.push(f_linkedin);
   }
-  if (f_twitter !== null && f_twitter !== undefined) {
+  if (f_twitter) {
     queryColumns.push("f_twitter = ?");
     queryValues.push(f_twitter);
   }
@@ -444,12 +448,16 @@ const updateFreelancer = asyncHandler(async (req, res) => {
     "SELECT * FROM `c_gigs_s_up_flancer` WHERE f_id = ?",
     [f_id]
   );
+  const { f_password, ...filteredFreelancer } = freelancer[0];
+  let token = jwt.sign(
+    { freelancer: filteredFreelancer },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: 86400 * 30,
+    }
+  );
 
-  let token = jwt.sign({ freelancer }, process.env.JWT_SECRET, {
-    expiresIn: 86400 * 30,
-  });
-
-  return res.status(200).json({ freelancer: freelancer[0], token });
+  return res.status(200).json({ freelancer: filteredFreelancer, token });
 });
 
 const logout = asyncHandler(async (req, res) => {

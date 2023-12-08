@@ -55,13 +55,13 @@ function UpdateProfileEmployer() {
           <input type="text" id="name" name="emp_name" />
 
           <label htmlFor="company">Company Name</label>
-          <input type="text" id="company" name="emp_company" />
+          <input type="text" id="company" name="emp_comp" />
 
           <label htmlFor="linked">Company Address<p><i>(can pass a Google Maps embedded src="". Follow these <a href="https://extension.umaine.edu/plugged-in/technology-marketing-communications/web/tips-for-web-managers/embed-map/" target="_blank">steps</a> to find the Share in Google Maps. Only copy what is inside src="")</i></p></label>
           <input type="text" id="address" name="emp_address" />
 
           <label htmlFor="port">Company Page</label>
-          <input type="text" id="port" name="emp_portfolio" />
+          <input type="text" id="port" name="emp_page" />
 
           <label htmlFor="fb">Company FaceBook</label>
           <input type="text" id="fb" name="emp_fb" />
@@ -70,7 +70,7 @@ function UpdateProfileEmployer() {
           <input type="text" id="insta" name="emp_insta" />
 
           <label htmlFor="linked">Company LinkedIn Link</label>
-          <input type="text" id="linked" name="emp_linked" />
+          <input type="text" id="linked" name="emp_linkedin" />
 
           <label htmlFor="pfp">Upload Profile Picture</label>
           <input type="file" id="myFile" name="emp_pfp" />
