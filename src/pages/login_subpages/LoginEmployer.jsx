@@ -15,7 +15,7 @@ function LoginEmployer({ isLoggedIn, setIsLoggedIn }) {
     try {
       let inputs = {
         emp_email: e.target.email.value,
-        emp_password: e.target.password.value,
+        emp_pass: e.target.password.value,
       };
 
       const data = await axiosFetch.post("/employer/login", inputs);

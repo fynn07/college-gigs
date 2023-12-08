@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { axiosFetch } from "../../utils/axios";
 import { Link } from "react-router-dom";
 
-function LoginFreelancer( {isLoggedIn, setIsLoggedIn } ) {
+function LoginFreelancer({ isLoggedIn, setIsLoggedIn }) {
 
   const navigate = useNavigate();
 
@@ -17,7 +17,7 @@ function LoginFreelancer( {isLoggedIn, setIsLoggedIn } ) {
         f_password: e.target.password.value,
       };
 
-      const data = await axiosFetch.post("/freelancer/login", inputs, {});
+      const data = await axiosFetch.post("/freelancer/login", inputs);
 
       if (data.status !== 200) {
         throw new Error(data.data.message);
