@@ -11,11 +11,7 @@ function SignupFreelancer() {
 
       const formData = new FormData(e.target);
 
-      const data = await axiosFetch.post("/freelancer/register", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const data = await axiosFetch.post("/freelancer/register", formData);
 
       if (data.status !== 200) {
         throw new Error(data.statusText);

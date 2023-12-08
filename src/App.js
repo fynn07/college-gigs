@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -42,7 +42,7 @@ import {
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div className="App">
       <Router>
@@ -52,8 +52,26 @@ function App() {
 
           <Route exact path="login">
             <Route index element={<Login />} />
-            <Route exact path="employer" element={<LoginEmployer isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn}/>} />
-            <Route exact path="freelancer" element={<LoginFreelancer  isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn}/>} />
+            <Route
+              exact
+              path="employer"
+              element={
+                <LoginEmployer
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                />
+              }
+            />
+            <Route
+              exact
+              path="freelancer"
+              element={
+                <LoginFreelancer
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                />
+              }
+            />
           </Route>
           <Route exact path="join">
             <Route index element={<Join />} />
@@ -61,20 +79,21 @@ function App() {
             <Route exact path="freelancer" element={<JoinFreelancer />} />
           </Route>
 
-          <Route
-            exact
-            path="user"
-            element={
-              <ProtectedRoute>
-                <Outlet />
-              </ProtectedRoute>
-            }
-          >
+          <Route exact path="user">
             <Route exact path="profile">
               <Route exact path="employer" element={<ProfileEmployer />} />
               <Route exact path="freelancer" element={<ProfileFreelancer />} />
             </Route>
-            <Route exact path="update">
+
+            <Route
+              exact
+              path="update"
+              element={
+                <ProtectedRoute>
+                  <Outlet />
+                </ProtectedRoute>
+              }
+            >
               <Route
                 exact
                 path="freelancer"
@@ -96,7 +115,7 @@ function App() {
           </Route>
 
           <Route exact path="/freelancer/apply" element={<Apply />} />
-          
+
           <Route exact path="/services" element={<Services />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />

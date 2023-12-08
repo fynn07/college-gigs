@@ -24,14 +24,14 @@ function FreelanceJobs({ jobs }) {
                 <h3>{job.f_name}</h3>
               </div>
               <div className="work-details work-component">
-                <h2><a href="/College_Gigs/College.php?ids=' . urlencode($fid . ',' . $eid) . '"><i className="fas fa-id-badge" style={{ fontSize: "30px" }}></i>View Profile</a></h2>
+                <Link to={`/user/profile/freelancer?id=${job.f_id}`}><h2><i className="fa fa-id-badge" style={{ fontSize: "30px" }} />{" "}View Profile</h2></Link>
               </div>
               <div className="work-details work-component">
                 <h3>{job.f_price}</h3>
               </div>
               <div className="work-details work-component">
                 <div className="work-details-button">
-                  <Link href={isAuthenticated ? "/payment" : "/login/employer"}><button><i className="fa fa-handshake-o" style={{ fontSize: "20px", marginRight: "10px", textAlign: "center" }}></i>Hire</button></Link>
+                  <Link to={isAuthenticated ? "/payment" : "/login/employer"}><button><i className="fa fa-handshake-o" style={{ fontSize: "20px", marginRight: "10px", textAlign: "center" }}></i>Hire</button></Link>
                 </div>
 
               </div>

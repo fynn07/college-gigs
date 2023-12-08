@@ -1,9 +1,33 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { axiosFetch } from "../../utils/axios";
 import "../../styles/subpage_styles/profile.css";
 
 function ProfileFreelancer() {
   const [freelancer, setFreelancer] = useState(JSON.parse(localStorage.getItem("userDetails")));
+  let [searchParams, setSearchParams] = useSearchParams();
+  const freelancer_id = searchParams.get("f_id");
+
+  console.log(freelancer_id);
+
+  async function getFreelancerById() {
+    try {
+      const data = await axiosFetch.get(`/freelancer?f_id=${freelancer_id}`);
+      if (data.status !== 200) throw new Error(data.statusText);
+
+      setFreelancer(data.freelancer);
+
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+
+  useEffect(() => {
+    if (!freelancer || freelancer_id !== freelancer.f_id) {
+      getFreelancerById();
+    }
+  }, []);
 
   if (!freelancer) {
     return <></>;
@@ -14,7 +38,7 @@ function ProfileFreelancer() {
       <div className="left-side">
         <div className="personal-info">
           {/* <img src="../../utils/Black.jpg" alt="Profile" /> */}
-          <img src= {`http://localhost:6969/${freelancer.f_pfp}`} alt="Profile Picture" />
+          <img src={`http://localhost:6969/${freelancer.f_pfp}`} alt="Profile" />
 
           <h2>Hey there! My name is </h2>
           <h1>{freelancer.f_name}</h1>
@@ -93,7 +117,7 @@ function ProfileFreelancer() {
             <li>
               <a rel="noopener noreferrer" target="_blank" href={freelancer.f_fb}>
                 <i
-                  className="fLink>fa-facebook-f"
+                  className="fa fa-facebook-f"
                   style={{
                     marginRight: "30px",
                     borderRadius: "10px",
@@ -109,7 +133,7 @@ function ProfileFreelancer() {
             <li>
               <a rel="noopener noreferrer" target="_blank" href={freelancer.f_twitter}>
                 <i
-                  className="fLink>fa-twitter"
+                  className="fa fa-twitter"
                   style={{
                     marginRight: "30px",
                     borderRadius: "10px",
@@ -124,7 +148,7 @@ function ProfileFreelancer() {
             <li>
               <a rel="noopener noreferrer" target="_blank" href={freelancer.f_linkedin}>
                 <i
-                  className="fLink>fa-linkedin-square"
+                  className="fa fa-linkedin-square"
                   style={{
                     marginRight: "30px",
                     borderRadius: "10px",
@@ -138,9 +162,8 @@ function ProfileFreelancer() {
             </li>
             <li>
               <a rel="noopener noreferrer" target="_blank" href={freelancer.f_insta}>
-
                 <i
-                  className="fLink>fa-instagram"
+                  className="fa fa-instagram"
                   style={{
                     marginRight: "30px",
                     borderRadius: "10px",
@@ -153,13 +176,18 @@ function ProfileFreelancer() {
               </a>
             </li>
           </ul>
-          <center>
-            <Link to="/user/update/freelancer" >
-              <button>
-                Edit Profile Information
-              </button>
-            </Link>
-          </center>
+
+          {
+            freelancer.f_id === freelancer_id && (
+              <center>
+                <Link to="/user/update/freelancer" >
+                  <button>
+                    Edit Profile Information
+                  </button>
+                </Link>
+              </center>
+            )
+          }
         </div>
       </div>
     </div >

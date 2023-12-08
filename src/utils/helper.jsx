@@ -28,5 +28,6 @@ export async function useFetchAllWorks(setData, filter) {
       }
     }
     fetchData();
+
   }, [setData, filter])
 }

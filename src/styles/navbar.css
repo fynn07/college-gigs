@@ -35,8 +35,6 @@
     gap: 30px;
     flex-wrap: wrap;
     margin-right: 100px;
-    
-
 }
 .navbar .rightSide .navbar_content *{
     flex: 1;
