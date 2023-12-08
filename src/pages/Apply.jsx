@@ -2,54 +2,44 @@ import React from "react";
 import { axiosFetch } from "../utils/axios";
 import 'font-awesome/css/font-awesome.min.css'
 import { toast } from "react-toastify";
+import { FaCcVisa, FaCcAmex, FaCcMastercard, FaCcDiscover } from "react-icons/fa"
 
 function Apply() {
 
   async function handleApplyWork(e) {
     e.preventDefault();
 
-    let inputs = {
-      f_name: e.target.name.value,
-      f_email: e.target.email.value,
-      f_work: e.target.work.value,
-      f_price: e.target.price.value,
-      f_description: e.target.description.value,
-      f_time: e.target.work_t.value,
-      f_sdate: e.target.work_start.value,
-      f_edate: e.target.work_end.value,
-      f_cname: e.target.cname.value,
-      f_card: e.target.card.value,
-      f_expmonth: e.target.expmonth.value,
-      f_expyear: e.target.expyear.value,
-      f_cvv: e.target.cvv.value,
-    };
+    try {
 
-    const formData = new FormData();
+      const formData = new FormData(e.target);
 
-    Object.entries(inputs).forEach(([key, value]) => {
-      formData.append(key, value)
-    });
+      const data = await axiosFetch.post("/freelancer/applyWork", formData);
 
+      if (data.status !== 200) {
+        throw new Error(data.statusText);
+      }
 
-    const data = await axiosFetch.post("/freelancer/applyWork", formData,);
-
-    if (data.status !== 200) {
-      throw new Error(data.statusText);
+      toast.success("Freelancer registered successfully!");
+    } catch (error) {
+      toast.error(error.message);
     }
-
-    toast.success("Freelancer registered successfully!");
 
   }
 
   return (
-    <form onSubmit={handleApplyWork}>
+    <form
+      onSubmit={handleApplyWork}
+      // encType="multipart/form-data"
+      method="post"
+      action=""
+    >
       <label htmlFor="fname">
         <i className="fa fa-user"></i> Full Name
       </label>
       <input
         type="text"
         id="fname"
-        name="name"
+        name="f_name"
         placeholder="Please enter your full name..."
         required
       ></input>
@@ -60,7 +50,7 @@ function Apply() {
       <input
         type="text"
         id="email"
-        name="email"
+        name="f_email"
         placeholder="john@example.com"
         required
       ></input>
@@ -68,7 +58,7 @@ function Apply() {
       <label htmlFor="work">
         <i className="fa fa-address-card-o"></i> Work Type
       </label>
-      <select name="work" className="work">
+      <select name="f_work" className="work">
         <option value="Graphic Design">Graphic Design</option>
         <option value="Proofreading and Writing">
           Proofreading and Writing
@@ -81,7 +71,7 @@ function Apply() {
       <label htmlFor="price">
         <i className="fa fa-address-card-o"></i> Starting Price
       </label>
-      <select name="price" className="price">
+      <select name="f_price" className="price">
         <option value=" $5.00 - $20.00 "> $5.00 - $20.00 </option>
         <option value=" $21.00 - $40.00 "> $21.00 - $40.00 </option>
         <option value=" $41.00 - $80.00 "> $41.00 - $80.00 </option>
@@ -94,7 +84,7 @@ function Apply() {
       </label>
       <textarea
         id="desc"
-        name="description"
+        name="f_description"
         className="desc"
         placeholder="Describe your work here..."
       ></textarea>
@@ -102,7 +92,7 @@ function Apply() {
       <label htmlFor="time">
         <i className="far fa-clock"></i> Average Working Hours
       </label>
-      <select name="work_t" className="work_t">
+      <select name="f_time" className="work_t">
         <option value="Morning(6:00 A.M. - 12:00 P.M. PHT)">
           Morning(6:00 A.M. - 12:00 P.M. PHT)
         </option>
@@ -124,7 +114,7 @@ function Apply() {
       <div className="row">
         <div className="col-50">
           <label htmlFor="day1">From</label>
-          <select name="work_start" className="work_d1">
+          <select name="f_sdate" className="work_d1">
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
             <option value="Wednesday">Wednesday</option>
@@ -136,7 +126,7 @@ function Apply() {
         </div>
         <div className="col-50">
           <label htmlFor="day2">To</label>
-          <select name="work_end" className="work_d2">
+          <select name="f_edate" className="work_d2">
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
             <option value="Wednesday">Wednesday</option>
@@ -151,21 +141,19 @@ function Apply() {
       <div className="col-50">
         <h2>Mode of Payment</h2>
 
-
-
         <label htmlFor="fname">Accepted Cards</label>
-        <select name="card">
+        <select name="f_card">
           <option value="visa">
-            <i className="fa fa-cc-visa"></i>
+            <FaCcVisa /> Visa
           </option>
           <option value="amex">
-            <i className="fa fa-cc-amex"></i>
+            <FaCcAmex /> Amex
           </option>
           <option value="mastercard">
-            <i className="fa fa-cc-mastercard"></i>
+            <FaCcMastercard /> Mastercard
           </option>
           <option value="discover">
-            <i className="fa fa-cc-discover"></i>
+            <FaCcDiscover /> Discover
           </option>
         </select>
 
@@ -173,7 +161,7 @@ function Apply() {
         <input
           type="text"
           id="cname"
-          name="cname"
+          name="f_cname"
           placeholder="Please enter your card name..."
           required
         ></input>
@@ -182,7 +170,7 @@ function Apply() {
         <input
           type="text"
           id="ccnum"
-          name="cardnumber"
+          name="f_cardnumber"
           placeholder="1111-2222-3333-4444"
           required
         ></input>
@@ -193,7 +181,7 @@ function Apply() {
             <input
               type="text"
               id="expmonth"
-              name="expmonth"
+              name="f_expmonth"
               placeholder="Please card expiry month..."
               required
             ></input>
@@ -201,8 +189,8 @@ function Apply() {
             <label htmlFor="expyear">Exp Year</label>
             <input
               type="text"
-              id="expyear"
-              name="expyear"
+              id="f_expyear"
+              name="f_expyear"
               placeholder="Expiry year here"
               required
             ></input>
@@ -213,7 +201,7 @@ function Apply() {
             <input
               type="text"
               id="cvv"
-              name="cvv"
+              name="f_cvv"
               placeholder="CVV here"
               required
             ></input>
@@ -221,14 +209,11 @@ function Apply() {
         </div>
       </div>
 
-      <center>
-        <input
-          type="submit"
-          value="Post the Free-Lance Application"
-          name="apply"
-          className="btn"
-        ></input>
-      </center>
+      <button
+        type="submit"
+        name="apply"
+        className="btn"
+      >Post the Free-Lance Application</button>
     </form>
   );
 }
