@@ -1,6 +1,7 @@
 import React from "react";
 import { axiosFetch } from "../utils/axios";
 import 'font-awesome/css/font-awesome.min.css'
+import '../styles/apply.css'
 import { toast } from "react-toastify";
 
 function Apply() {
@@ -42,6 +43,8 @@ function Apply() {
   }
 
   return (
+    <div className="apply-container">
+      <h1>Freelance Application</h1>
     <form onSubmit={handleApplyWork}>
       <label htmlFor="fname">
         <i className="fa fa-user"></i> Full Name
@@ -65,89 +68,106 @@ function Apply() {
         required
       ></input>
 
-      <label htmlFor="work">
-        <i className="fa fa-address-card-o"></i> Work Type
-      </label>
-      <select name="work" className="work">
-        <option value="Graphic Design">Graphic Design</option>
-        <option value="Proofreading and Writing">
-          Proofreading and Writing
-        </option>
-        <option value="Digital Marketing">Digital Marketing</option>
-        <option value="Programming">Programming</option>
-        <option value="Others">Others</option>
-      </select>
+      <div className="semi-container">
 
-      <label htmlFor="price">
-        <i className="fa fa-address-card-o"></i> Starting Price
-      </label>
-      <select name="price" className="price">
-        <option value=" $5.00 - $20.00 "> $5.00 - $20.00 </option>
-        <option value=" $21.00 - $40.00 "> $21.00 - $40.00 </option>
-        <option value=" $41.00 - $80.00 "> $41.00 - $80.00 </option>
-        <option value=" $81.00 - $100.00 "> $81.00 - $100.00 </option>
-        <option value=" To Be Discussed "> To Be Discussed </option>
-      </select>
+        <div className="semi-container-children">
+        <label htmlFor="work">
+          <i className="fa fa-address-card-o"></i> Work Type
+        </label>
+        <select name="work" className="work">
+          <option value="Graphic Design">Graphic Design</option>
+          <option value="Proofreading and Writing">
+            Proofreading and Writing
+          </option>
+          <option value="Digital Marketing">Digital Marketing</option>
+          <option value="Programming">Programming</option>
+          <option value="Others">Others</option>
+        </select>
+        </div>
 
-      <label htmlFor="desc">
-        <i className="fa fa-commenting-o"></i> Description
-      </label>
-      <textarea
-        id="desc"
-        name="description"
-        className="desc"
-        placeholder="Describe your work here..."
-      ></textarea>
-
-      <label htmlFor="time">
-        <i className="far fa-clock"></i> Average Working Hours
-      </label>
-      <select name="work_t" className="work_t">
-        <option value="Morning(6:00 A.M. - 12:00 P.M. PHT)">
-          Morning(6:00 A.M. - 12:00 P.M. PHT)
-        </option>
-        <option value="Afternoon(12:00 P.M. - 6:00 P.M. PHT)">
-          Afternoon(12:00 P.M. - 6:00 P.M. PHT)
-        </option>
-        <option value="Evening(6:00 P.M. - 12:00 A.M. PHT)">
-          Evening(6:00 P.M. - 12:00 A.M. PHT)
-        </option>
-        <option value="Early Morning(1:00 A.M. - 6:00 A.M. PHT)">
-          Early Morning(1:00 A.M. - 6:00 A.M. PHT)
-        </option>
-        <option value="Others">Others</option>
-      </select>
-      <label htmlFor="days">
-        <i className="fas fa-calendar-alt"></i> Working Days
-      </label>
-
-      <div className="row">
-        <div className="col-50">
-          <label htmlFor="day1">From</label>
-          <select name="work_start" className="work_d1">
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
+        <div className="semi-container-children">
+          <label htmlFor="price">
+            <i className="fa fa-address-card-o"></i> Starting Price
+          </label>
+          <select name="price" className="price">
+            <option value=" $5.00 - $20.00 "> $5.00 - $20.00 </option>
+            <option value=" $21.00 - $40.00 "> $21.00 - $40.00 </option>
+            <option value=" $41.00 - $80.00 "> $41.00 - $80.00 </option>
+            <option value=" $81.00 - $100.00 "> $81.00 - $100.00 </option>
+            <option value=" To Be Discussed "> To Be Discussed </option>
           </select>
         </div>
-        <div className="col-50">
-          <label htmlFor="day2">To</label>
-          <select name="work_end" className="work_d2">
-            <option value="Monday">Monday</option>
-            <option value="Tuesday">Tuesday</option>
-            <option value="Wednesday">Wednesday</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
+
+        <div className="semi-container-children">
+          <label htmlFor="desc">
+            <i className="fa fa-commenting-o"></i> Description
+          </label>
+          <textarea
+            id="desc"
+            name="description"
+            className="desc"
+            placeholder="Describe your work here..."
+          ></textarea>
+        </div>
+
+        <div className="semi-container-children">
+          <label htmlFor="time">
+            <i className="far fa-clock"></i> Average Working Hours
+          </label>
+          <select name="work_t" className="work_t">
+            <option value="Morning(6:00 A.M. - 12:00 P.M. PHT)">
+              Morning(6:00 A.M. - 12:00 P.M. PHT)
+            </option>
+            <option value="Afternoon(12:00 P.M. - 6:00 P.M. PHT)">
+              Afternoon(12:00 P.M. - 6:00 P.M. PHT)
+            </option>
+            <option value="Evening(6:00 P.M. - 12:00 A.M. PHT)">
+              Evening(6:00 P.M. - 12:00 A.M. PHT)
+            </option>
+            <option value="Early Morning(1:00 A.M. - 6:00 A.M. PHT)">
+              Early Morning(1:00 A.M. - 6:00 A.M. PHT)
+            </option>
+            <option value="Others">Others</option>
           </select>
         </div>
+
+        <div className="children-container">
+
+        <div className="children-one">
+            <label htmlFor="days">
+              <i className="fas fa-calendar-alt"></i> Working Days
+            </label>
+              <div className="col-50">
+                <label htmlFor="day1">From</label>
+                <select name="work_start" className="work_d1">
+                  <option value="Monday">Monday</option>
+                  <option value="Tuesday">Tuesday</option>
+                  <option value="Wednesday">Wednesday</option>
+                  <option value="Thursday">Thursday</option>
+                  <option value="Friday">Friday</option>
+                  <option value="Saturday">Saturday</option>
+                  <option value="Sunday">Sunday</option>
+                </select>
+              </div>
+          </div>  
+
+          <div className="children-two">
+            <div className="col-50">
+              <label htmlFor="day2">To</label>
+              <select name="work_end" className="work_d2">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+              </select>
+            </div>
+        </div>
+        </div>
+
       </div>
-
       <div className="col-50">
         <h2>Mode of Payment</h2>
 
@@ -230,6 +250,7 @@ function Apply() {
         ></input>
       </center>
     </form>
+    </div>
   );
 }
 
