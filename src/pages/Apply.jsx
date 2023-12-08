@@ -12,9 +12,23 @@ function Apply() {
 
     try {
 
-      const formData = new FormData(e.target);
+      const inputs = {
+        f_name: e.target.f_name.value,
+        f_email: e.target.f_email.value,
+        f_work: e.target.f_work.value,
+        f_time: e.target.f_time.value,
+        f_sdate: e.target.f_sdate.value,
+        f_edate: e.target.f_edate.value,
+        f_description: e.target.f_description.value,
+        f_price: e.target.f_price.value,
+        f_cname: e.target.f_cname.value,
+        f_card: e.target.f_card.value,
+        f_expmonth: e.target.f_expmonth.value,
+        f_expyear: e.target.f_expyear.value,
+        f_cvv: e.target.f_cvv.value,
+      }
 
-      const data = await axiosFetch.post("/freelancer/applyWork", formData);
+      const data = await axiosFetch.post("/freelancer/applyWork", inputs);
 
       if (data.status !== 200) {
         throw new Error(data.statusText);
