@@ -2,124 +2,161 @@
 
 #### **[Backend API DOCUMENTATION](https://documenter.getpostman.com/view/31033077/2s9YkgC5Hy)**
 
-> 이 노래는 it's about you, baby
+## Endpoints
 
-> Only you
+### Authentication
 
-> You, you, you, you, you, you, you
+#### Login as an Employer
 
-> 내가 힘들 때, 울 것 같을 때
+- **Route:** `/loginFreelancer`
+- **Method:** `POST`
+- **Description:** Allows registered employers to log in.
+- **Request Body:**
+  - `email` (string): Employer's email
+  - `password` (string): Employer's password
 
-> 기운도 이젠 나지 않을 때
+#### Login as a Freelancer
 
-> (It's you) 날 걱정하네, (it's you) 날 웃게하네
+- **Route:** `/registerFreelancer`
+- **Method:** `POST`
+- **Description:** Allows registered freelancers to log in.
+- **Request Body:**
+  - `email` (string): Freelancer's email
+  - `password` (string): Freelancer's password
 
-> 말 안 해도 돼, boy, what do you say?
+#### Register as an Employer
 
-> 멀리든 언제든지 달려와
+- **Route:** `/api/auth/register/employer`
+- **Method:** `POST`
+- **Description:** Allows employers to create an account.
+- **Request Body:**
 
-> (They keep on asking me, "who is he?")
+- [x] `emp_name` employer name
+- [x] `emp_email` employer email
+- [x] `emp_pass` employer password
+- [x] `emp_comp` employer company
+- [x] `emp_fb` employer facebook
+- [x] `emp_insta` employer instagram
+- [x] `emp_linkedin` employer linkedin
+- [x] `emp_page` employer page
+- [x] `emp_address` employer address
+- **Request File**
+- [x] `emp_pfp` image file **name of input must be _emp_pfp_, form must have attribute _enctype="multipart/form-data"_**
 
-> 바쁜 척도 없이 넌 나타나
+#### Register as a Freelancer
 
-> (They keep on asking me, "who is he?")
+- **Route:** `/api/auth/register/freelancer`
+- **Method:** `POST`
+- **Description:** Allows freelancers to create an account.
+- **Request Body:**
+- [x] `f_name` freelancer name
+- [x] `f_age` freelancer age
+- [x] `f_email` freelancer email
+- [x] `f_password` freelancer password
+- [x] `f_school` freelancer school
+- [x] `f_level` freelancer school level
+- [x] `f_course` freelancer college course
+- [x] `f_portfolio` freelancer portfolio
+- [x] `f_fb` freelancer facebook
+- [x] `f_insta` freelancer instagram
+- [x] `f_linkedin` freelancer linkedin
+- [x] `f_twitter` freelancer twitter
+- **Request File**
+- [x] `f_pfp` image file **name of input must be _emp_pfp_, form must have attribute _enctype="multipart/form-data"_**
 
-> "이게 말이 되니?" 난 물어봐
+### Employer Operations
 
-> (They keep on asking me, "who is he?")
+#### Update Employer Profile
 
-> 너는 말야, he's the one that's living in my system, baby
+- **Route:** `/updateEmployer`
+- **Method:** `POST`
+- **Description:** Allows the logged-in employer to update their profile details.
+- **Request Body:**  
+  _all fields are optional_
+- [x] `emp_name` new employer name
+- [x] `emp_comp` new employer company
+- [x] `emp_fb` new employer facebook
+- [x] `emp_insta` new employer instagram
+- [x] `emp_linkedin` new employer
+- [x] `emp_page` new employer page
+- [x] `emp_pfp` new employer profile picture
+- [x] `emp_address` new employer address
+- **Request File:**
+  _all fields are optional_
+- [x] `emp_pfp` new profile picture
 
-> Oh my, oh my God! 예상했어 나
+#### Hire Freelancer for Work
 
-> I was really hoping that he will come through
+- **Route:** `hireFreelancer`
+- **Method:** `POST`
+- **Description:** Enables the employer to hire a freelancer for a specific work.
+- **Query Parameters:** `work_id`
 
-> Oh my, oh my God! 단 너뿐이야
+#### Delete Freelancer's Work
 
-> Asking all the time about what I should do
+- **Route:** `deleteFreelancerWork`
+- **Method:** `DELETE`
+- **Description:** Allows the employer to delete a specific work assigned to a freelancer.
+- **Query Parameters:** `work_id`
 
-> No, I can never let him go, 너만 생각나 24
+### Freelancer Operations
 
-> 난 행운아야 정말로, I know, I know
+#### Get Freelancer Details
 
-> 널 알기 전까지는 나, 의미 없었어 전부 다
+- **Route:** `/getFreelancerDetails`
+- **Method:** `GET`
+- **Description:** Retrieves details of the logged-in employer.
+- **Query Parameters:** `id`
 
-> 내 맘이 끝이 없는 걸, I know, I know
+#### Update Freelancer Profile
 
-> I'm going crazy, right?
+- **Route:** `/updateFreelancer`
+- **Method:** `POST`
+- **Description:** Allows the logged-in freelancer to update their profile details.
+- **Request Body:**
+  _all fields are optional_
+- [x] `f_name` new freelancer name
+- [x] `f_age` new freelancer age
+- [x] `f_school` new freelancer school
+- [x] `f_level` new freelancer level
+- [x] `f_course` new freelancer course
+- [x] `f_portfolio` new freelancer portfolio
+- [x] `f_fb` new freelancer facebook
+- [x] `f_insta` new freelancer instagram
+- [x] `f_linkedin` new frealancer linkedin
+- [x] `f_twitter` new freelancer twitter
+- **Request File:**
+  _all fields are optional_
+- [x] `f_pfp` new profile picture
 
-> 어디서든, 몇 번이든
+#### Apply for Work
 
-> There ain't nothing else that I would hold on to
+- **Route:** `/applyFreelancerWork`
+- **Method:** `POST`
+- **Description:** Enables the freelancer to apply for a specific work opportunity.
+- **Request Body:**
 
-> I hear his voice through all the noise
+- [x] `f_work`
+- [x] `f_time`
+- [x] f_sdate,
+- [x] f_edate,
+- [x] f_description,
+- [x] f_price,
+- [x] f_cname,
+- [x] f_card,
+- [x] f_expmonth,
+- [x] f_expyear,
+- [x]f_cvv
 
-> 잠시라도 내 손 놓지 마, no, no
+#### Get Freelancer's Works
 
-> 걱정 없잖아 'cause I got someone
+- **Route:** `/getFreelancerWorks`
+- **Method:** `GET`
+- **Description:** Retrieves all works assigned to the logged-in freelancer.
 
-> 혼자라도 괜찮아 'cause I love someone
+### General Operations
 
-> 멀리든 언제든지 달려와
-
-> (They keep on asking me, "who is he?")
-
-> 바쁜 척도 없이 넌 나타나
-
-> (They keep on asking me, "who is he?")
-
-> "이게 말이 되니?" 난 물어봐
-
-> (They keep on asking me, "who is he?")
-
-> 너는 말야, he's the one that's living in my system, baby
-
-> Oh my, oh my God! 예상했어 나
-
-> I was really hoping that he will come through
-
-> Oh my, oh my God! 단 너뿐이야
-
-> Asking all the time about what I should do
-
-> No, I can never let him go, 너만 생각나 24
-
-> 난 행운아야 정말로, I know, I know
-
-> 널 알기 전까지는 나, 의미 없었어 전부 다
-
-> 내 맘이 끝이 없는 걸, I know, I know
-
-> He's the one that's living in my system, baby
-
-> Baby, baby
-
-> Bab-baby (I'm going crazy, right?)
-
-> Baby, baby (I'm going crazy, right?)
-
-> Bab-baby (너와 나)
-
-> My heart is glowing, it's glowing up (glowing up)
-
-> 너랑만 있으면 무서울 게 없어 (glowing up)
-
-> 가득 메워진, 다 메워진 (붉어진)
-
-> My heart is glowing, it'd be glowing ('cause he!)
-
-> Oh my, oh my God! 예상했어 나
-
-> I was really hoping that he will come through
-
-> Oh my, oh my God! 단 너뿐이야
-
-> Asking all the time about what I should do (너와 나)
-
-> No, I can never let him go, he's right there for me, 24
-
-> 난 행운아야 정말로, I know, I know (너와 나)
-
-> 널 알기 전까지는 나, 의미 없었어 전부 다, 어떡해
-
-> My heart is glowing, it's glowing
+#### Logout
+- **Route:** `/logout`
+- **Method:** `POST`
+- **Description:** Logs the user out of the system by blacklisting the provided JWT token.
