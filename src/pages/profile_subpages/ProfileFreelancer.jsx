@@ -154,7 +154,7 @@ function ProfileFreelancer() {
             </li>
           </ul>
           <center>
-            <Link to="/update/freelancer" >
+            <Link to="/user/update/freelancer" >
               <button>
                 Edit Profile Information
               </button>

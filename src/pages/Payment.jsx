@@ -1,5 +1,5 @@
 
-import "../styles/payment.css";
+// import "../styles/payment.css";
 
 function Payment() {
 

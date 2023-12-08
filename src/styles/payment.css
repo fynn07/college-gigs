@@ -1,9 +1,9 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Courier New", Courier, monospace;
-}
+} */
 
 main {
   font-family: Arial, sans-serif;
@@ -17,6 +17,7 @@ main {
   background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(67, 67, 67, 0.75)),
     url(./Payment.jpg);
 }
+
 .logo {
   height: 100px;
   width: 150px;

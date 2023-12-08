@@ -33,7 +33,7 @@ function UpdateProfileFreelancer() {
       <div className="preview-container">
         <h2>Profile Preview</h2>
         <section className="preview">
-          <img id="preview-profile-picture" src="/College_Gigs/Blank.jpg" alt="Profile Picture" />
+          <img id="preview-profile-picture" src="/College_Gigs/Blank.jpg" alt="Profile" />
           <div className="personal-info preview-container">
             <h2>Name: <span id="preview-name"></span></h2>
             <p>Age: <span id="preview-age"></span></p>
