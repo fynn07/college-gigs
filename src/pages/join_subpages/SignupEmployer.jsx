@@ -13,14 +13,13 @@ function SignupEmployer() {
 
       const data = await axiosFetch.post("/employer/register", formData);
 
-      console.log(data);
-
       if (data.status !== 200) {
         throw new Error(data.statusText);
       }
 
       toast.success("Employer registered successfully!");
     } catch (e) {
+      console.log(e);
       toast.error(e.message);
     }
   }
