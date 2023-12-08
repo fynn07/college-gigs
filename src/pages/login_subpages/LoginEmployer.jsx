@@ -38,7 +38,7 @@ function LoginEmployer() {
   return (
     <div className="sign_log_container container-login">
       <div className="header">
-        <h1 className="login_header">Employer Login</h1>
+        <h1 className="login_header" id="login_header_head">Employer Login</h1>
       </div>
       <div className="form-cont">
         <form onSubmit={handleLoginEmployer} method="post" action=""

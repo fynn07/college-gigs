@@ -4,6 +4,9 @@
     font-family: 'Courier New', Courier, monospace;
     box-sizing: border-box;
 }
+#about *{
+    zoom: 95%;
+}
 #about {
     text-align: center;
 
