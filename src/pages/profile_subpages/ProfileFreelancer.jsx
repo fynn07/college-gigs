@@ -13,8 +13,8 @@ function ProfileFreelancer() {
     <div className="profile">
       <div className="left-side">
         <div className="personal-info">
-          <img src="../../utils/Black.jpg" alt="Profile" />
-          {/* <img src="" alt="Profile Picture" /> */}
+          {/* <img src="../../utils/Black.jpg" alt="Profile" /> */}
+          <img src= {`http://localhost:6969/${freelancer.f_pfp}`} alt="Profile Picture" />
 
           <h2>Hey there! My name is </h2>
           <h1>{freelancer.f_name}</h1>
@@ -80,7 +80,7 @@ function ProfileFreelancer() {
           <p>
             <b>Portfolio Link: </b>
             <span>
-              <a rel="noopener noreferrer" target="_blank" href={freelancer.f_portfolio} className="portfolio-link">
+              <a rel="noopener noreferrer" target="_blank" href="https://kekma.net/zzart.mp4" className="portfolio-link">
                 {freelancer.f_name}'s Portfolio
               </a>
             </span>

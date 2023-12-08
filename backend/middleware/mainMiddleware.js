@@ -36,6 +36,8 @@ const authenticateFreelancer= async (
   if (!authorization) {
     return res.status(401).send("Freelancer is unauthenticated")
   }
+
+
   const token = authorization.split(" ")[1];
   try {
 
