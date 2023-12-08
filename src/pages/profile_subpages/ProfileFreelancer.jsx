@@ -99,18 +99,6 @@ function ProfileFreelancer() {
           );
         }) : <></>}
 
-        <div className="port">
-          <br />
-          <p>
-            <b>Portfolio Link: </b>
-            <span>
-              <a rel="noopener noreferrer" target="_blank" href="https://kekma.net/zzart.mp4" className="portfolio-link">
-                {freelancer.f_name}'s Portfolio
-              </a>
-            </span>
-          </p>
-        </div>
-
         <div className="social-links">
           <h3>Connect with me</h3>
           <ul>

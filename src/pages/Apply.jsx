@@ -1,6 +1,7 @@
 import React from "react";
 import { axiosFetch } from "../utils/axios";
 import 'font-awesome/css/font-awesome.min.css'
+import '../styles/apply.css'
 import { toast } from "react-toastify";
 import { FaCcVisa, FaCcAmex, FaCcMastercard, FaCcDiscover } from "react-icons/fa"
 
@@ -136,8 +137,44 @@ function Apply() {
             <option value="Sunday">Sunday</option>
           </select>
         </div>
-      </div>
 
+        <div className="children-container">
+
+          <div className="children-one">
+            <label htmlFor="days">
+              <i className="fas fa-calendar-alt"></i> Working Days
+            </label>
+            <div className="col-50">
+              <label htmlFor="day1">From</label>
+              <select name="work_start" className="work_d1">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="children-two">
+            <div className="col-50">
+              <label htmlFor="day2">To</label>
+              <select name="work_end" className="work_d2">
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+      </div>
       <div className="col-50">
         <h2>Mode of Payment</h2>
 
@@ -215,6 +252,7 @@ function Apply() {
         className="btn"
       >Post the Free-Lance Application</button>
     </form>
+
   );
 }
 
