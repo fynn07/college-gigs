@@ -64,9 +64,9 @@ function ProfileEmployer() {
   }
 
   return (
-    <>
+    <div className="profile-container">
       <div className="profile">
-        <div className="left-side">
+        <div className="left-side" id="emp">
           <div className="personal-info">
             {/* <img src="/College_Gigs/Blank.jpg" alt="Profile " /> */}
             <img src={`http://localhost:6969/${employer.emp_pfp}`} alt="Profile" />
@@ -180,7 +180,7 @@ function ProfileEmployer() {
           }
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
