@@ -24,7 +24,7 @@ function FreelanceJobs({ jobs }) {
                 <h3>{job.f_name}</h3>
               </div>
               <div className="work-details work-component">
-                <Link to={`/user/profile/freelancer?id=${job.f_id}`}><h2><i className="fa fa-id-badge" style={{ fontSize: "30px" }} />{" "}View Profile</h2></Link>
+                <Link to={`/user/profile/freelancer?f_id=${job.f_id}`}><h2><i className="fa fa-id-badge" style={{ fontSize: "30px" }} />{" "}View Profile</h2></Link>
               </div>
               <div className="work-details work-component">
                 <h3>{job.f_price}</h3>

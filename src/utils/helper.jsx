@@ -9,17 +9,19 @@ export function checkMissingInputs(inputs) {
   }
 }
 
-export async function useFetchAllWorks(setData, filter) {
+export async function useFetchAllWorks(setData, filter = "") {
 
   useEffect(() => {
     const fetchData = async () => {
 
       try {
-        let data = await axiosFetch("/freelancer/works");
+        let data = (await axiosFetch("/freelancer/works")).data["Freelancer works"];
 
-        data = data.data["Freelancer works"].filter((work) => {
-          return work.f_work === filter;
-        });
+        if (filter) {
+          data = data.filter((work) => {
+            return work.f_work === filter;
+          });
+        }
 
         setData(data);
 
@@ -29,5 +31,5 @@ export async function useFetchAllWorks(setData, filter) {
     }
     fetchData();
 
-  }, [setData, filter])
+  }, [])
 }

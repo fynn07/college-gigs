@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { axiosFetch } from "../../utils/axios";
 import "../../styles/subpage_styles/profile.css";
 
 function ProfileFreelancer() {
-  const [freelancer, setFreelancer] = useState(JSON.parse(localStorage.getItem("userDetails")));
-  let [searchParams, setSearchParams] = useSearchParams();
+  const [freelancer, setFreelancer] = useState();
+  let [searchParams] = useSearchParams();
   const freelancer_id = searchParams.get("f_id");
-
-  console.log(freelancer_id);
 
   async function getFreelancerById() {
     try {
       const data = await axiosFetch.get(`/freelancer?f_id=${freelancer_id}`);
       if (data.status !== 200) throw new Error(data.statusText);
 
-      setFreelancer(data.freelancer);
+      setFreelancer(data.data);
 
     } catch (error) {
       toast.error(error.message)
@@ -24,13 +22,15 @@ function ProfileFreelancer() {
   }
 
   useEffect(() => {
+    setFreelancer(JSON.parse(localStorage.getItem("userDetails")));
+
     if (!freelancer || freelancer_id !== freelancer.f_id) {
       getFreelancerById();
     }
   }, []);
 
   if (!freelancer) {
-    return <></>;
+    return <></>
   }
 
   return (
