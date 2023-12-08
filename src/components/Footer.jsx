@@ -8,7 +8,7 @@ import InstagramIcon from "./resources/ico/instagram.png";
 function Footer() {
   return (
     <div className="footer">
-      <div className="container" id="footer_container">
+      <div className="container-footer" id="footer_container">
         <div className="footer-links">
           <div className="footer-links-link">
             <Link to="/About">About</Link>
