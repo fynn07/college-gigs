@@ -33,14 +33,12 @@ const authenticateFreelancer= async (
   next
 ) => {
   const { authorization } = req.headers;
+
   if (!authorization) {
     return res.status(401).send("Freelancer is unauthenticated")
   }
-
-
   const token = authorization.split(" ")[1];
-  try {
-
+  try{
     const results = await queryDatabase("SELECT * FROM `token_blacklist` WHERE token = ?", [token]);
     if (results.length > 0) {
       return res.status(401).send("Token is blacklisted");
@@ -50,6 +48,7 @@ const authenticateFreelancer= async (
     req.tokenData = payload.freelancer;
     next();
   } catch (error) {
+    console.log(error)
     return res.status(401).send("Freelancer is unauthenticated")
   }
 };
