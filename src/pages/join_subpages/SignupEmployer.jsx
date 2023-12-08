@@ -19,7 +19,6 @@ function SignupEmployer() {
 
       toast.success("Employer registered successfully!");
     } catch (e) {
-      console.log(e);
       toast.error(e.message);
     }
   }

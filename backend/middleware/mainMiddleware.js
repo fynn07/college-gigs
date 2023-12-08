@@ -1,20 +1,18 @@
-const jwt= require("jsonwebtoken");
-const {queryDatabase} = require("../controllers/mainControllers");
+const jwt = require("jsonwebtoken");
+const { queryDatabase } = require("../controllers/mainControllers");
 
-const authenticateEmployer = async (
-  req,
-  res,
-  next
-) => {
+const authenticateEmployer = async (req, res, next) => {
   const { authorization } = req.headers;
   if (!authorization) {
-    return res.status(401).send("Employer is unauthenticated")
+    return res.status(401).send("Employer is unauthenticated");
   }
   const token = authorization.split(" ")[1];
 
   try {
-
-    const results = await queryDatabase("SELECT * FROM `token_blacklist` WHERE token = ?", [token]);
+    const results = await queryDatabase(
+      "SELECT * FROM `token_blacklist` WHERE token = ?",
+      [token]
+    );
     if (results.length > 0) {
       return res.status(401).send("Token is blacklisted");
     }
@@ -23,23 +21,23 @@ const authenticateEmployer = async (
     req.tokenData = payload.employer;
     next();
   } catch (error) {
-    return res.status(401).send("Employer is unauthenticated")
+    return res.status(401).send("Employer is unauthenticated");
   }
 };
 
-const authenticateFreelancer= async (
-  req,
-  res,
-  next
-) => {
+const authenticateFreelancer = async (req, res, next) => {
+  console.log(req);
   const { authorization } = req.headers;
 
   if (!authorization) {
-    return res.status(401).send("Freelancer is unauthenticated")
+    return res.status(401).send("Freelancer is unauthenticated");
   }
   const token = authorization.split(" ")[1];
-  try{
-    const results = await queryDatabase("SELECT * FROM `token_blacklist` WHERE token = ?", [token]);
+  try {
+    const results = await queryDatabase(
+      "SELECT * FROM `token_blacklist` WHERE token = ?",
+      [token]
+    );
     if (results.length > 0) {
       return res.status(401).send("Token is blacklisted");
     }
@@ -48,9 +46,8 @@ const authenticateFreelancer= async (
     req.tokenData = payload.freelancer;
     next();
   } catch (error) {
-    console.log(error)
-    return res.status(401).send("Freelancer is unauthenticated")
+    return res.status(401).send("Freelancer is unauthenticated");
   }
 };
 
-module.exports = {authenticateEmployer,  authenticateFreelancer}
+module.exports = { authenticateEmployer, authenticateFreelancer };
