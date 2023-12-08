@@ -332,7 +332,7 @@ const updateEmployer = asyncHandler(async (req, res) => {
   }
 
   if (filepath !== null && filepath !== undefined) {
-    queryColumns.push("f_pfp = ?");
+    queryColumns.push("emp_pfp = ?");
     queryValues.push(filepath);
   }
 
@@ -347,7 +347,15 @@ const updateEmployer = asyncHandler(async (req, res) => {
   }
 
   await queryDatabase(query, [...queryValues, emp_id]);
-  return res.status(200).send("Success");
+
+  const employer = await queryDatabase(
+    "SELECT * FROM `c_gigs_s_up_employer` WHERE emp_id = ?",
+    [emp_id]
+  );
+  let token = jwt.sign({ employer }, process.env.JWT_SECRET, {
+    expiresIn: 86400 * 30,
+  });
+  return res.status(200).json({ employer: employer[0], token });
 });
 
 const updateFreelancer = asyncHandler(async (req, res) => {
@@ -432,7 +440,16 @@ const updateFreelancer = asyncHandler(async (req, res) => {
 
   await queryDatabase(query, [...queryValues, f_id]);
 
-  return res.status(200).send("SUCCESS");
+  const freelancer = await queryDatabase(
+    "SELECT * FROM `c_gigs_s_up_flancer` WHERE f_id = ?",
+    [f_id]
+  );
+
+  let token = jwt.sign({ freelancer }, process.env.JWT_SECRET, {
+    expiresIn: 86400 * 30,
+  });
+
+  return res.status(200).json({ freelancer: freelancer[0], token });
 });
 
 const logout = asyncHandler(async (req, res) => {

@@ -1,9 +1,12 @@
 
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom"
 import { axiosFetch } from "../../utils/axios";
 import "../../styles/subpage_styles/update_profile.css"
 
 function UpdateProfileFreelancer() {
+
+  const navigate = useNavigate();
 
   async function handleUpdateProfileFreelancer(e) {
     e.preventDefault();
@@ -18,6 +21,9 @@ function UpdateProfileFreelancer() {
       }
 
       toast.success("Freelancer updated account successfully!");
+      localStorage.setItem("userDetails", JSON.stringify(data.data.freelancer));
+      localStorage.setItem("token", JSON.stringify(data.data.token));
+      navigate("/user/profile/freelancer");
     } catch (e) {
       toast.error(e.message);
     }
@@ -48,10 +54,10 @@ function UpdateProfileFreelancer() {
         <h2>Edit Profile Information</h2>
         <form onSubmit={handleUpdateProfileFreelancer} encType="multipart/form-data" method="post">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" name="f_name" value="" />
+          <input type="text" id="name" name="f_name" />
 
           <label htmlFor="age">Age</label>
-          <input type="text" id="age" name="f_age" value="" />
+          <input type="text" id="age" name="f_age" />
 
           <label htmlFor="school">School</label>
           <select type="text" id="school" name="f_school" >
@@ -75,7 +81,7 @@ function UpdateProfileFreelancer() {
           </select>
 
           <label htmlFor="course">Course</label>
-          <input type="text" id="course" name="f_course" value="" />
+          <input type="text" id="course" name="f_course" />
 
           <label htmlFor="port">Portfolio Link</label>
           <input type="text" id="port" name="f_portfolio" />

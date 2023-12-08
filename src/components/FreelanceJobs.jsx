@@ -4,16 +4,15 @@ import '../styles/freelancejob.css'
 
 function FreelanceJobs({ jobs }) {
 
-  const isAuthenticated = Boolean(localStorage.getItem("token"));
-
-  function handleApplyJob() {
-
-  }
+  const isAuthenticated = localStorage.getItem("token");
+  const isEmployer = isAuthenticated && Boolean(JSON.parse(localStorage.getItem("userDetails")).emp_id)
 
   return (
     <>
       {
         jobs.map((job, index) => {
+          if (job.emp_id) return <></>
+
           return (
             <div key={job.f_id} className="work-box">
               <div className="work-thumbnail work-component">
@@ -31,7 +30,7 @@ function FreelanceJobs({ jobs }) {
               </div>
               <div className="work-details work-component">
                 <div className="work-details-button">
-                  <Link to={isAuthenticated ? "/payment" : "/login/employer"}><button><i className="fa fa-handshake-o" style={{ fontSize: "20px", marginRight: "10px", textAlign: "center" }}></i>Hire</button></Link>
+                  {isEmployer && <Link to={`/payment?work_id=${job.w_id}`}><button><i className="fa fa-handshake-o" style={{ fontSize: "20px", marginRight: "10px", textAlign: "center" }}></i>Hire</button></Link>}
                 </div>
 
               </div>

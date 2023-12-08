@@ -26,7 +26,6 @@ const authenticateEmployer = async (req, res, next) => {
 };
 
 const authenticateFreelancer = async (req, res, next) => {
-  console.log(req);
   const { authorization } = req.headers;
 
   if (!authorization) {

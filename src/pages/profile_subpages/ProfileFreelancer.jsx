@@ -24,7 +24,7 @@ function ProfileFreelancer() {
   useEffect(() => {
     setFreelancer(JSON.parse(localStorage.getItem("userDetails")));
 
-    if (!freelancer || freelancer_id !== freelancer.f_id) {
+    if ((!freelancer || freelancer_id !== freelancer.f_id) && freelancer_id) {
       getFreelancerById();
     }
   }, []);
@@ -103,7 +103,7 @@ function ProfileFreelancer() {
           <h3>Connect with me</h3>
           <ul>
             <li>
-              <a rel="noopener noreferrer" target="_blank" href={freelancer.f_fb}>
+              <a rel="noopener noreferrer" target=" _blank" href={freelancer.f_fb}>
                 <i
                   className="fa fa-facebook-f"
                   style={{
@@ -166,7 +166,7 @@ function ProfileFreelancer() {
           </ul>
 
           {
-            freelancer.f_id === freelancer_id && (
+            (!freelancer_id || freelancer.f_id === freelancer_id) && (
               <center>
                 <Link to="/user/update/freelancer" >
                   <button>

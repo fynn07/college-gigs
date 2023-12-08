@@ -1,8 +1,12 @@
 import { toast } from "react-toastify";
 import { axiosFetch } from "../../utils/axios";
+import { useNavigate } from "react-router-dom"
 import "../../styles/subpage_styles/update_profile_emp.css"
 
 function UpdateProfileEmployer() {
+
+
+  const navigate = useNavigate();
 
   async function handleUpdateProfileEmployer(e) {
     e.preventDefault();
@@ -16,7 +20,11 @@ function UpdateProfileEmployer() {
         throw new Error(data.statusText);
       }
 
-      toast.success("Freelancer updated account successfully!");
+
+      toast.success("Employer updated account successfully!");
+      localStorage.setItem("userDetails", JSON.stringify(data.data.employer));
+      localStorage.setItem("token", JSON.stringify(data.data.token));
+      navigate("/user/profile/employer");
     } catch (e) {
       toast.error(e.message);
     }
@@ -44,10 +52,10 @@ function UpdateProfileEmployer() {
         <h2>Edit Profile Information</h2>
         <form onSubmit={handleUpdateProfileEmployer} encType="multipart/form-data" method="post">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" name="emp_name" value="" />
+          <input type="text" id="name" name="emp_name" />
 
           <label htmlFor="company">Company Name</label>
-          <input type="text" id="company" name="emp_company" value="" />
+          <input type="text" id="company" name="emp_company" />
 
           <label htmlFor="linked">Company Address<p><i>(can pass a Google Maps embedded src="". Follow these <a href="https://extension.umaine.edu/plugged-in/technology-marketing-communications/web/tips-for-web-managers/embed-map/" target="_blank">steps</a> to find the Share in Google Maps. Only copy what is inside src="")</i></p></label>
           <input type="text" id="address" name="emp_address" />

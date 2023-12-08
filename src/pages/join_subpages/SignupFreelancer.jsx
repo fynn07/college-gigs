@@ -1,10 +1,13 @@
 import React from "react";
 import { axiosFetch } from "../../utils/axios";
 import "../../styles/subpage_styles/signup_freelancer.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 function SignupFreelancer() {
+
+  const navigate = useNavigate();
+
   async function handleRegisterFreelancer(e) {
     try {
       e.preventDefault();
@@ -18,6 +21,7 @@ function SignupFreelancer() {
       }
 
       toast.success("Freelancer registered successfully!");
+      navigate("/login/freelancer");
     } catch (e) {
       toast.error(e.message);
     }

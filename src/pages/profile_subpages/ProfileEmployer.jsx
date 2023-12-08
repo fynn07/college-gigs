@@ -57,7 +57,7 @@ function ProfileEmployer() {
   }, [employer, getWorkedWith])
 
 
-  let pattern = new RegExp('/^https?\:\/\/(www\.|maps\.)?google(\.[a-z]+){1,2}\/maps\/?\?([^&]+&)*(ll=-?[0-9]{1,2}\.[0-9]+,-?[0-9]{1,2}\.[0-9]+|q=[^&]+)+($|&)/');
+  let pattern = new RegExp(".*www.google.com/maps/.*");
 
   if (!employer || !employer.emp_id) {
     return <></>;
@@ -79,7 +79,7 @@ function ProfileEmployer() {
             <div className="service">
               {
                 pattern.test(employer.emp_address) ?
-                  <iframe src={employer.emp_address} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" /> :
+                  <iframe src={employer.emp_address} allowfullscreen="" width={600} height={300} loading="lazy" referrerpolicy="no-referrer-when-downgrade" /> :
                   <p>No map location available.</p>
               }
             </div>
@@ -97,7 +97,7 @@ function ProfileEmployer() {
         }
         <div className="port">
           <p><b>Portfolio Link</b></p>
-          <a rel="noopener noreferrer" target="_blank" href="https://kekma.net/zzart.mp4" className="portfolio-link">
+          <a rel="noopener noreferrer" target="_blank" href={process.env.NODE_ENV === "development" ? "https://kekma.net/zzart.mp4" : employer.f_portfolio} className="portfolio-link">
             {employer.emp_name}'s Portfolio
           </a>
         </div>
@@ -168,7 +168,7 @@ function ProfileEmployer() {
           </ul>
 
           {
-            employer.f_id === employer_id && (
+            (!employer_id || employer.f_id === employer_id) && (
               <center>
                 <Link to="/user/update/employer">
                   <button>

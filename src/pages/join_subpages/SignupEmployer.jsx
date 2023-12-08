@@ -1,10 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { axiosFetch } from "../../utils/axios";
 import { toast } from "react-toastify";
 import "../../styles/subpage_styles/signup_employer.css";
 
 function SignupEmployer() {
+
+  const navigate = useNavigate();
   async function handleRegisterEmployer(e) {
     try {
       e.preventDefault();
@@ -18,6 +20,8 @@ function SignupEmployer() {
       }
 
       toast.success("Employer registered successfully!");
+
+      navigate("/login/employer");
     } catch (e) {
       toast.error(e.message);
     }
