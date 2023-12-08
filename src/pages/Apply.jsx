@@ -7,6 +7,7 @@ function Apply() {
 
   async function handleApplyWork(e) {
     e.preventDefault();
+
     let inputs = {
       f_name: e.target.name.value,
       f_email: e.target.email.value,
@@ -30,19 +31,13 @@ function Apply() {
     });
 
 
-    const data = await axiosFetch.post("/freelancer/applyWork", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        "authorization": localStorage.getItem("token")
-      },
-    });
+    const data = await axiosFetch.post("/freelancer/applyWork", formData,);
 
     if (data.status !== 200) {
       throw new Error(data.statusText);
     }
 
     toast.success("Freelancer registered successfully!");
-
 
   }
 
