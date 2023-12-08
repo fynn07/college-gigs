@@ -1,8 +1,8 @@
 import "./App.css";
+import React, { useState } from 'react';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import Join from "./pages/Join";
@@ -31,6 +31,8 @@ import Writing from "./pages/work_subpages/Writing";
 
 import Payment from "./pages/Payment";
 
+import Apply from "./pages/Apply";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -40,17 +42,18 @@ import {
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} />
         <Routes>
           <Route exact path="/" element={<Home />} />
 
           <Route exact path="login">
             <Route index element={<Login />} />
-            <Route exact path="employer" element={<LoginEmployer />} />
-            <Route exact path="freelancer" element={<LoginFreelancer />} />
+            <Route exact path="employer" element={<LoginEmployer isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn}/>} />
+            <Route exact path="freelancer" element={<LoginFreelancer  isLoggedIn = {isLoggedIn} setIsLoggedIn = {setIsLoggedIn}/>} />
           </Route>
           <Route exact path="join">
             <Route index element={<Join />} />
@@ -92,6 +95,8 @@ function App() {
             <Route exact path="writing" element={<Writing />} />
           </Route>
 
+          <Route exact path="/freelancer/apply" element={<Apply />} />
+          
           <Route exact path="/services" element={<Services />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />

@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { axiosFetch } from "../../utils/axios";
 import { Link } from "react-router-dom";
 
-function LoginFreelancer() {
+function LoginFreelancer( {isLoggedIn, setIsLoggedIn } ) {
 
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ function LoginFreelancer() {
       if (data.status !== 200) {
         throw new Error(data.data.message);
       }
-
+      setIsLoggedIn(true)
       toast.success("Freelancer logged in successfully!");
       localStorage.setItem("userDetails", JSON.stringify(data.data.freelancer));
       localStorage.setItem("token", JSON.stringify(data.data.token));

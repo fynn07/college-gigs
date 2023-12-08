@@ -6,10 +6,9 @@ import { checkMissingInputs } from "../../utils/helper";
 import { useNavigate } from "react-router-dom"
 import "../../styles/login_subpage.css";
 
-function LoginEmployer() {
+function LoginEmployer({ isLoggedIn, setIsLoggedIn }) {
 
   const navigate = useNavigate();
-
 
   async function handleLoginEmployer(e) {
     e.preventDefault();
@@ -24,8 +23,8 @@ function LoginEmployer() {
       if (data.status !== 200) {
         throw new Error(data.data.message);
       }
-
       toast.success("Employer logged in successfully!");
+      setIsLoggedIn(true);
       localStorage.setItem("userDetails", JSON.stringify(data.data.employer));
       localStorage.setItem("token", JSON.stringify(data.data.token));
       navigate("/user/profile/employer");
