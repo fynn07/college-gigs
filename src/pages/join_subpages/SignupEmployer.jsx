@@ -11,6 +11,8 @@ function SignupEmployer() {
 
       const formData = new FormData(e.target);
 
+      console.log(formData);
+
       const data = await axiosFetch.post("/employer/register", formData);
 
       if (data.status !== 200) {

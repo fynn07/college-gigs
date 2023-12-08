@@ -14,7 +14,7 @@ function Apply() {
 
       const formData = new FormData(e.target);
 
-      const data = await axiosFetch.post("/freelancer/applyWork", formData);
+      const data = await axiosFetch.post("/freelancer/applyWork", { body: formData });
 
       if (data.status !== 200) {
         throw new Error(data.statusText);
