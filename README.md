@@ -98,7 +98,7 @@
 - **Method:** `DELETE`
 - **Description:** Allows the employer to delete a specific work assigned to a freelancer.
 - **Query Parameters:** `work_id`
-
+s
 ### Freelancer Operations
 
 #### Get Freelancer Details
